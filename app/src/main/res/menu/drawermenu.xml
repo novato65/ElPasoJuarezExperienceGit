@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+        <item android:title="Dónde?">
+        <menu>
+    <item android:title="Dónde dormir..."
+          android:id="@+id/nav_item_dormir"
+          android:icon="@drawable/ic_hotel"/>
+
+    <item android:title="Dónde comer / tomar..."
+          android:id="@+id/nav_item_sent"
+          android:icon="@drawable/ic_comer"/>
+
+    <item android:title="Dónde comprar..."
+          android:id="@+id/nav_item_draft"
+          android:icon="@drawable/ic_comprar"/>
+
+
+    </menu>
+    </item>
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:title="Spam"
+                android:icon="@drawable/spam"/>
+            <item
+                android:title="Bin"
+                android:icon="@drawable/bin"/>
+        </menu>
+    </item>
+
+    <group android:id="@+id/group_settings_id">
+
+        <item android:title="Settings"
+              android:icon="@drawable/settings"/>
+        <item android:title="Help"
+             android:icon="@drawable/help"/>
+    </group>
+
+
+</menu>

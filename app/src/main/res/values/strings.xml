@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">El Paso - Juárez Experience</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_inicio">Inicio</string>
+    <string name="mexButton">Español</string>
+    <string name="usaButton">English</string>
+    <string name="mexBienvenida">Bienvenid@ a El Paso - Juarez Experience</string>
+    <string name="mexLogin">Entrar a El Paso - Juarez Experience</string>
+    <string name="mexEmail">Escriba su email de usuario</string>
+    <string name="mexDatos">Sus datos de usuario</string>
+
+
+    <string name="mexPassword">Escriba su contrasena de usuario</string>
+    <string name="mexConfirmPassword">Confirme su contrasena de usuario</string>
+    <string name="mexUsername">Escriba su nombre de usuario</string>
+    <string name="mexNombre">Escriba su nombre</string>
+    <string name="usaBienvenida">Welcome to El Paso - Juarez Experience</string>
+</resources>
