@@ -63,8 +63,12 @@ public class MainActivity extends AppCompatActivity{
                      FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
                      xfragmentTransaction.replace(R.id.containerView,new TabFragmentComer()).commit();
                  }
+                 if (menuItem.getItemId() == R.id.nav_item_comprar) {
+                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
+                     xfragmentTransaction.replace(R.id.containerView,new TabFragmentComprar()).commit();
+                 }
 
-                 //Todo: Añadir navegacion nav_item_comprar
+
                  return false;
             }
 
