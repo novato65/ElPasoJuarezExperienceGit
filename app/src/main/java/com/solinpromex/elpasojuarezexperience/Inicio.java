@@ -22,6 +22,7 @@ public class Inicio extends AppCompatActivity {
         addListenerusaButton();
     }
 
+    //test commit desde mac
     public void addListenermexButton() {
 
         //Select a specific button to bundle it with the action you want
