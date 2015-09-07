@@ -18,7 +18,7 @@ public class TabFragmentDormir extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3 ;
+    public static int int_items = 2 ;
 
     @Nullable
     @Override
@@ -67,8 +67,8 @@ public class TabFragmentDormir extends Fragment {
         {
           switch (position){
               case 0 : return new PrimaryFragmentDormir();
-              case 1 : return new SocialFragment();
-              case 2 : return new UpdatesFragment();
+              case 1 : return new SocialFragmentDormir();
+
           }
         return null;
         }
@@ -92,8 +92,7 @@ public class TabFragmentDormir extends Fragment {
                     return "CIUDAD JUAREZ";
                 case 1 :
                     return "EL PASO";
-                case 2 :
-                    return "Updates";
+
             }
                 return null;
         }

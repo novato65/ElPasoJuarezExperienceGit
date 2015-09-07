@@ -12,7 +12,7 @@
         android:id="@+id/textView"
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/holo_blue_dark"
-        android:text="Dormir\CD Juarez"/>
+        android:text="Dormir\nCD Juarez"/>
 
     <TextView
         android:layout_width="wrap_content"
