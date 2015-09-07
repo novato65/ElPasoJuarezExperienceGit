@@ -10,6 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 public class Inicio extends AppCompatActivity {
 
     private Button mexbutton;
@@ -21,6 +27,15 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.activity_inicio);
         addListenermexButton();
         addListenerusaButton();
+
+        // Enable Local Datastore.
+
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, "4ANQsOwBaaESGyfwLMJZpyQr95nXjVY75MNonCXd", "PDExtdiU4IvhYN5bWmsUoqmCfWF5TIlKnTjIHBAY");
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "barco del mississipi");
+        testObject.saveInBackground();
     }
 
     //test commit desde mac 1953 cambiado en dell ahora mac...
