@@ -34,7 +34,7 @@ public class Inicio extends AppCompatActivity {
 
         Parse.initialize(this, "4ANQsOwBaaESGyfwLMJZpyQr95nXjVY75MNonCXd", "PDExtdiU4IvhYN5bWmsUoqmCfWF5TIlKnTjIHBAY");
         ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "barco del mississipi");
+        testObject.put("foo", "barco del mississipi dell ");
         testObject.saveInBackground();
     }
 
