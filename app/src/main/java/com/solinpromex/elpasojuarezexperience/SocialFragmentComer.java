@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class SocialFragmentDormir extends Fragment {
+public class SocialFragmentComer extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.social_layout_dormir,null);
+        return inflater.inflate(R.layout.social_layout_comer,null);
     }
 
 

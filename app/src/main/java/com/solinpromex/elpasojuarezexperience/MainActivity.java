@@ -1,5 +1,4 @@
 package com.solinpromex.elpasojuarezexperience;
-
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -48,18 +47,22 @@ public class MainActivity extends AppCompatActivity{
                 mDrawerLayout.closeDrawers();
 
 
+//opcion para abrir actividad, no fragment
+//                 if (menuItem.getItemId() == R.id.nav_item_sent) {
+ //                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+//                     fragmentTransaction.replace(R.id.containerView,new SentFragment()).commit();
 
-                 if (menuItem.getItemId() == R.id.nav_item_sent) {
-                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                     fragmentTransaction.replace(R.id.containerView,new SentFragment()).commit();
-
-                 }
+//                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_dormir) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
                     xfragmentTransaction.replace(R.id.containerView,new TabFragmentDormir()).commit();
                 }
 
+                 if (menuItem.getItemId() == R.id.nav_item_comer) {
+                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
+                     xfragmentTransaction.replace(R.id.containerView,new TabFragmentComer()).commit();
+                 }
                  return false;
             }
 
