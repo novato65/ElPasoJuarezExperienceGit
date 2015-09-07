@@ -22,7 +22,7 @@ public class Inicio extends AppCompatActivity {
         addListenerusaButton();
     }
 
-    //test commit desde mac 1953 cambiado en dell...
+    //test commit desde mac 1953 cambiado en dell ahora mac...
     public void addListenermexButton() {
 
         //Select a specific button to bundle it with the action you want
