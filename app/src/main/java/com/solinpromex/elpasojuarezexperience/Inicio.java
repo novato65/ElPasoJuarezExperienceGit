@@ -30,6 +30,8 @@ public class Inicio extends AppCompatActivity {
 
         // Enable Local Datastore.
 
+        //desde dell
+
         Parse.enableLocalDatastore(this);
 
         Parse.initialize(this, "4ANQsOwBaaESGyfwLMJZpyQr95nXjVY75MNonCXd", "PDExtdiU4IvhYN5bWmsUoqmCfWF5TIlKnTjIHBAY");
