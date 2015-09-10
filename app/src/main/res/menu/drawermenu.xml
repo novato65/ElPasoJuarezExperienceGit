@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group android:id="@+id/group_settings_id3">
 
-
+        <item android:title="Selecciona una opción..." />
+    </group>
         <item android:title="Dónde?">
         <menu>
     <item android:title="Dónde dormir..."
