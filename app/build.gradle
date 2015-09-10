@@ -29,4 +29,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile files('src/main/libs/Parse-1.10.1.jar')
     compile files('src/main/libs/bolts-android-1.2.1.jar')
+    compile 'com.mcxiaoke.volley:library:1.0.+'
 }
