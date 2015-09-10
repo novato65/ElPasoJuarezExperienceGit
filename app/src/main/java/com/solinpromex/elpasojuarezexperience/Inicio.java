@@ -32,12 +32,7 @@ public class Inicio extends AppCompatActivity {
 
         //desde dell
 //desde MAC
-        Parse.enableLocalDatastore(this);
 
-        Parse.initialize(this, "4ANQsOwBaaESGyfwLMJZpyQr95nXjVY75MNonCXd", "PDExtdiU4IvhYN5bWmsUoqmCfWF5TIlKnTjIHBAY");
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "barco del mississipi dell2 ");
-        testObject.saveInBackground();
     }
 
     //test commit desde mac 1953 cambiado en dell ahora mac...
