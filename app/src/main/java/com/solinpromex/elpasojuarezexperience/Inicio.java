@@ -44,7 +44,7 @@ public class Inicio extends AppCompatActivity {
     public void addListenermexButton() {
 
         //Select a specific button to bundle it with the action you want
-//test desde mac 003
+//test desde mac 003.3
         mexbutton = (Button) findViewById(R.id.mexButton);
 
 
