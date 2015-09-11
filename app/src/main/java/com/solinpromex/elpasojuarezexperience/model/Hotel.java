@@ -3,61 +3,125 @@ package com.solinpromex.elpasojuarezexperience.model;
 import java.util.ArrayList;
 
 public class Hotel {
-	private String title, thumbnailUrl, descripcion,direccion,web,tel_hotel,tel_reservas;
-	private int year,num_estrellas;
-	private double rating,latitud,longitud;
-	private ArrayList<String> genre;
+	private String nombre, foto, descripcion,direccion,web,tel_hotel,tel_reservas;
+	private int num_estrellas;
+	private double calificacion,latitud,longitud;
+
 
 	public Hotel() {
 	}
 
-	public Hotel(String name, String thumbnailUrl, int year, double rating,
-				 ArrayList<String> genre) {
-		this.title = name;
-		this.thumbnailUrl = thumbnailUrl;
-		this.year = year;
-		this.rating = rating;
-		this.genre = genre;
+	public Hotel(String nombre, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas,
+				 double calificacion, double latitud, double longitud, int num_estrellas) {
+		this.nombre = nombre;
+		this.foto = foto;
+		this.descripcion = descripcion;
+        this.direccion = direccion;
+		this.calificacion = calificacion;
+		this.web = web;
+		this.tel_hotel = tel_hotel;
+		this.tel_reservas = tel_reservas;
+		this.latitud = latitud;
+		this.longitud = longitud;
+		this.num_estrellas = num_estrellas;
 	}
 
-	public String getTitle() {
-		return title;
+	//STRINGS
+	//nombre
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setTitle(String name) {
-		this.title = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	// foto
+	public String getFoto() {
+		return foto;
 	}
 
-	public String getThumbnailUrl() {
-		return thumbnailUrl;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
-	public void setThumbnailUrl(String thumbnailUrl) {
-		this.thumbnailUrl = thumbnailUrl;
+	//descripcion
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+	// direccion
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+	//web
+    public String getWeb() {
+        return web;
+    }
+
+    public void setWeb(String web) {
+        this.web = web;
+    }
+	//tel_hotel
+    public String getTel_hotel() {
+        return tel_hotel;
+    }
+
+    public void setTel_hotel(String tel_hotel) {
+        this.tel_hotel = tel_hotel;
+    }
+	//tel_reservas
+    public String getTel_reservas() {
+        return tel_reservas;
+    }
+
+    public void setTel_reservas(String tel_reservas) {
+        this.tel_reservas = tel_reservas;
+    }
+
+
+	//INT
+
+	public int getNum_estrellas() {
+		return num_estrellas;
 	}
 
-	public int getYear() {
-		return year;
+	public void setNum_estrellas(int num_estrellas) {
+		this.num_estrellas = num_estrellas;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	//DOUBLE
+//calificacion
+	public double getCalificacion() {
+		return calificacion;
 	}
 
-	public double getRating() {
-		return rating;
+	public void setCalificacion(double calificacion) {
+		this.calificacion = calificacion;
 	}
+    //latitud
+    public double getLlatitud() {
+        return latitud;
+    }
 
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+    //longitud
+    public double getLongitud() {
+        return longitud;
+    }
 
-	public ArrayList<String> getGenre() {
-		return genre;
-	}
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
 
-	public void setGenre(ArrayList<String> genre) {
-		this.genre = genre;
-	}
 
 }
