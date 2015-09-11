@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.solinpromex.elpasojuarezexperience.CustomListAdapter;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
-import com.solinpromex.elpasojuarezexperience.model.Movie;
+import com.solinpromex.elpasojuarezexperience.model.Hotel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,9 +35,9 @@ public class PrimaryFragmentDormir extends Fragment {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://api.androidhive.info/json/movies.json";
+    private static final String url = "http://solinpromex.com/epje/php/movies.json";
     private ProgressDialog pDialog;
-    private List<Movie> movieList = new ArrayList<Movie>();
+    private List<Hotel> hotelList = new ArrayList<Hotel>();
     private ListView listView;
      private CustomListAdapter adapter;
 
@@ -54,12 +54,12 @@ public class PrimaryFragmentDormir extends Fragment {
 
 
         listView = (ListView) getView().findViewById(R.id.list);
-        adapter = new CustomListAdapter(getActivity(), movieList);
+        adapter = new CustomListAdapter(getActivity(), hotelList);
         listView.setAdapter(adapter);
 
         pDialog = new ProgressDialog(getActivity());
         // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
+        pDialog.setMessage("Procesando datos...");
         pDialog.show();
 
 
@@ -77,23 +77,16 @@ public class PrimaryFragmentDormir extends Fragment {
                             try {
 
                                 JSONObject obj = response.getJSONObject(i);
-                                Movie movie = new Movie();
-                                movie.setTitle(obj.getString("title"));
-                                movie.setThumbnailUrl(obj.getString("image"));
-                                movie.setRating(((Number) obj.get("rating"))
-                                        .doubleValue());
-                                movie.setYear(obj.getInt("releaseYear"));
+                                Hotel hotel = new Hotel();
+                                hotel.setNombre(obj.getString("title"));
+                                hotel.setFoto(obj.getString("image"));
+                                hotel.setNum_estrellas(obj.getInt("releaseYear"));
+                                hotel.setCalificacion(obj.getInt("releaseYear"));
 
-                                // Genre is json array
-                                JSONArray genreArry = obj.getJSONArray("genre");
-                                ArrayList<String> genre = new ArrayList<String>();
-                                for (int j = 0; j < genreArry.length(); j++) {
-                                    genre.add((String) genreArry.get(j));
-                                }
-                                movie.setGenre(genre);
+
 
                                 // adding movie to movies array
-                                movieList.add(movie);
+                                hotelList.add(hotel);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
