@@ -2,7 +2,7 @@ package com.solinpromex.elpasojuarezexperience;
 
 import com.solinpromex.elpasojuarezexperience.R;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
-import com.solinpromex.elpasojuarezexperience.model.Movie;
+import com.solinpromex.elpasojuarezexperience.model.Hotel;
 
 import java.util.List;
 
@@ -20,22 +20,22 @@ import com.android.volley.toolbox.NetworkImageView;
 public class CustomListAdapter extends BaseAdapter {
 	private Activity activity;
 	private LayoutInflater inflater;
-	private List<Movie> movieItems;
+	private List<Hotel> hotelItems;
 	ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-	public CustomListAdapter(Activity activity, List<Movie> movieItems) {
+	public CustomListAdapter(Activity activity, List<Hotel> hotelItems) {
 		this.activity = activity;
-		this.movieItems = movieItems;
+		this.hotelItems = hotelItems;
 	}
 
 	@Override
 	public int getCount() {
-		return movieItems.size();
+		return hotelItems.size();
 	}
 
 	@Override
 	public Object getItem(int location) {
-		return movieItems.get(location);
+		return hotelItems.get(location);
 	}
 
 	@Override
@@ -56,34 +56,29 @@ public class CustomListAdapter extends BaseAdapter {
 			imageLoader = AppController.getInstance().getImageLoader();
 		NetworkImageView thumbNail = (NetworkImageView) convertView
 				.findViewById(R.id.thumbnail);
-		TextView title = (TextView) convertView.findViewById(R.id.title);
-		TextView rating = (TextView) convertView.findViewById(R.id.rating);
-		TextView genre = (TextView) convertView.findViewById(R.id.genre);
-		TextView year = (TextView) convertView.findViewById(R.id.releaseYear);
+		TextView nombre = (TextView) convertView.findViewById(R.id.title);
+		TextView num_estrellas = (TextView) convertView.findViewById(R.id.rating);
+		TextView direccion = (TextView) convertView.findViewById(R.id.genre);
+		TextView calificacion = (TextView) convertView.findViewById(R.id.releaseYear);
 
 		// getting movie data for the row
-		Movie m = movieItems.get(position);
+		Hotel m = hotelItems.get(position);
 
 		// thumbnail image
-		thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
+		thumbNail.setImageUrl(m.getFoto(), imageLoader);
 		
-		// title
-		title.setText(m.getTitle());
+		// nombre
+		nombre.setText(m.getNombre());
 		
-		// rating
-		rating.setText("Rating: " + String.valueOf(m.getRating()));
+		// num-estrellas
+		num_estrellas.setText("Estrellas: " + String.valueOf(m.getNum_estrellas()));
 		
-		// genre
-		String genreStr = "";
-		for (String str : m.getGenre()) {
-			genreStr += str + ", ";
-		}
-		genreStr = genreStr.length() > 0 ? genreStr.substring(0,
-				genreStr.length() - 2) : genreStr;
-		genre.setText(genreStr);
-		
-		// release year
-		year.setText(String.valueOf(m.getYear()));
+		// direccion
+
+		direccion.setText(m.getDireccion());
+
+		//calificacion
+		calificacion.setText(String.valueOf(m.getCalificacion()));
 
 		return convertView;
 	}

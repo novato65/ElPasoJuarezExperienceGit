@@ -18,8 +18,6 @@
     <string name="mexNombre">Escriba su nombre</string>
     <string name="usaBienvenida">Welcome to El Paso - Juarez Experience</string>
 
-    <string name="ranklabel">"Rank : "</string>
-    <string name="countrylabel">"Country : "</string>
-    <string name="populationlabel">"Population : "</string>
+
 
 </resources>

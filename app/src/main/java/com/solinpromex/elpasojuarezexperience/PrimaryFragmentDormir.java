@@ -39,7 +39,7 @@ public class PrimaryFragmentDormir extends Fragment {
     private ProgressDialog pDialog;
     private List<Movie> movieList = new ArrayList<Movie>();
     private ListView listView;
-    private CustomListAdapter adapter;
+     private CustomListAdapter adapter;
 
 
     @Nullable
