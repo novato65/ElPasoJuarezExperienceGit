@@ -35,7 +35,7 @@ public class PrimaryFragmentDormir extends Fragment {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://solinpromex.com/epje/php/movies.json";
+    private static final String url = "http://solinpromex.com/epje/php/recuperar_hoteles.php";
     private ProgressDialog pDialog;
     private List<Hotel> hotelList = new ArrayList<Hotel>();
     private ListView listView;
@@ -78,10 +78,11 @@ public class PrimaryFragmentDormir extends Fragment {
 
                                 JSONObject obj = response.getJSONObject(i);
                                 Hotel hotel = new Hotel();
-                                hotel.setNombre(obj.getString("title"));
-                                hotel.setFoto(obj.getString("image"));
-                                hotel.setNum_estrellas(obj.getInt("releaseYear"));
-                                hotel.setCalificacion(obj.getInt("releaseYear"));
+                                hotel.setNombre(obj.getString("nombre_hotel"));
+                                hotel.setZona_hotel(obj.getString("zona_hotel"));
+                                hotel.setFoto(obj.getString("foto_hotel"));
+                                hotel.setNum_estrellas(obj.getInt("num_estrellas"));
+                                hotel.setCalificacion(obj.getInt("calificacion_hotel"));
 
 
 

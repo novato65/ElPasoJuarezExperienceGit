@@ -3,7 +3,7 @@ package com.solinpromex.elpasojuarezexperience.model;
 import java.util.ArrayList;
 
 public class Hotel {
-	private String nombre, foto, descripcion,direccion,web,tel_hotel,tel_reservas;
+	private String nombre, foto, descripcion,direccion,web,tel_hotel,tel_reservas,zona_hotel;
 	private int num_estrellas;
 	private double calificacion,latitud,longitud;
 
@@ -11,7 +11,7 @@ public class Hotel {
 	public Hotel() {
 	}
 
-	public Hotel(String nombre, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas,
+	public Hotel(String nombre, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas, String zona_hotel,
 				 double calificacion, double latitud, double longitud, int num_estrellas) {
 		this.nombre = nombre;
 		this.foto = foto;
@@ -24,6 +24,7 @@ public class Hotel {
 		this.latitud = latitud;
 		this.longitud = longitud;
 		this.num_estrellas = num_estrellas;
+        this.zona_hotel = zona_hotel;
 	}
 
 	//STRINGS
@@ -85,6 +86,14 @@ public class Hotel {
     public void setTel_reservas(String tel_reservas) {
         this.tel_reservas = tel_reservas;
     }
+    //nombre
+    public String getZona_hotel() {
+        return zona_hotel;
+    }
+
+    public void setZona_hotel(String zona_hotel) {
+        this.zona_hotel = zona_hotel;
+    }
 
 
 	//INT
@@ -122,6 +131,7 @@ public class Hotel {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
+
 
 
 }

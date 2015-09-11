@@ -58,7 +58,7 @@ public class CustomListAdapter extends BaseAdapter {
 				.findViewById(R.id.thumbnail);
 		TextView nombre = (TextView) convertView.findViewById(R.id.title);
 		TextView num_estrellas = (TextView) convertView.findViewById(R.id.rating);
-		TextView direccion = (TextView) convertView.findViewById(R.id.genre);
+		TextView zona_hotel = (TextView) convertView.findViewById(R.id.genre);
 		TextView calificacion = (TextView) convertView.findViewById(R.id.releaseYear);
 
 		// getting movie data for the row
@@ -71,14 +71,14 @@ public class CustomListAdapter extends BaseAdapter {
 		nombre.setText(m.getNombre());
 		
 		// num-estrellas
-		num_estrellas.setText("Estrellas: " + String.valueOf(m.getNum_estrellas()));
+		num_estrellas.setText("Categoría: " + String.valueOf(m.getNum_estrellas())+ " estrellas");
 		
 		// direccion
 
-		direccion.setText(m.getDireccion());
+		zona_hotel.setText(m.getZona_hotel());
 
 		//calificacion
-		calificacion.setText(String.valueOf(m.getCalificacion()));
+		calificacion.setText("Valoración: " + String.valueOf(m.getCalificacion()));
 
 		return convertView;
 	}

@@ -42,7 +42,8 @@
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/genre"
-        android:textSize="@dimen/genre" />
+        android:textSize="@dimen/genre"
+        android:textStyle="bold"/>
 
     <!-- Release Year -->
     <TextView
