@@ -12,9 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.solinpromex.elpasojuarezexperience.CustomListAdapter;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
 import com.solinpromex.elpasojuarezexperience.model.Hotel;
@@ -30,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PrimaryFragmentDormir extends Fragment {
+public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnItemClickListener {
     private Button mexbutton;
 
 
@@ -59,6 +62,8 @@ public class PrimaryFragmentDormir extends Fragment {
         listView = (ListView) getView().findViewById(R.id.list);
         adapter = new CustomListAdapter(getActivity(), hotelList);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(this);
 
         pDialog = new ProgressDialog(getActivity());
         // Showing progress dialog before making http request
@@ -129,6 +134,15 @@ public class PrimaryFragmentDormir extends Fragment {
         }
     }
 
+
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Hotel hotelActual = (Hotel)adapter.getItem(position);
+        String msg = "Elegiste el hotel:n"+hotelActual.getNombre()+"-"+hotelActual.getLlatitud();
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+
+    }
     public void addListenermexButton() {
 
         //Select a specific button to bundle it with the action you want
