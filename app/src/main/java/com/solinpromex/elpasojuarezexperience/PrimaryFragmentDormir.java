@@ -34,7 +34,7 @@ import java.util.List;
 
 
 public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnItemClickListener {
-    private Button mexbutton;
+
 
 
     // Log tag
@@ -45,20 +45,20 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
     private ProgressDialog pDialog;
     private List<Hotel> hotelList = new ArrayList<Hotel>();
     private ListView listView;
-     private CustomListAdapter adapter;
+    private CustomListAdapter adapter;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.primary_layout_dormir,null);
+        return inflater.inflate(R.layout.primary_layout_dormir, null);
     }
 
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        addListenermexButton();
+
         listView = (ListView) getView().findViewById(R.id.list);
         adapter = new CustomListAdapter(getActivity(), hotelList);
         listView.setAdapter(adapter);
@@ -69,7 +69,6 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
         // Showing progress dialog before making http request
         pDialog.setMessage("Procesando datos...");
         pDialog.show();
-
 
 
         // Creating volley request obj
@@ -103,9 +102,6 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
                                 hotel.setTwitter(obj.getString("twitter_hotel"));
 
 
-
-
-
                                 // adding movie to movies array
                                 hotelList.add(hotel);
 
@@ -133,6 +129,7 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
 
 
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -147,34 +144,15 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
     }
 
 
-
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Hotel hotelActual = (Hotel)adapter.getItem(position);
-        String msg = "Elegiste el hotel:n"+hotelActual.getNombre()+"-"+hotelActual.getLlatitud();
+        Hotel hotelActual = (Hotel) adapter.getItem(position);
+        String msg = "Elegiste el hotel:n" + hotelActual.getNombre() + "-" + hotelActual.getLlatitud();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
         startActivity(new Intent(getActivity(), Detalle_Hotel.class));
 
     }
-    public void addListenermexButton() {
-
-        //Select a specific button to bundle it with the action you want
-//test desde mac 003.3
-        mexbutton = (Button) getView().findViewById(R.id.mexButton);
 
 
-        mexbutton.setOnClickListener(new View.OnClickListener() {
-
-
-            public void onClick(View view) {
-
-                startActivity(new Intent(getActivity() , Detalle_Hotel.class));
-
-
-            }
-
-        });
-
-    }
 }
