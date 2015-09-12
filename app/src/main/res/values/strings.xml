@@ -17,6 +17,11 @@
     <string name="mexUsername">Escriba su nombre de usuario</string>
     <string name="mexNombre">Escriba su nombre</string>
     <string name="usaBienvenida">Welcome to El Paso - Juarez Experience</string>
+    <string name="title_activity_detalle__hotel">Detalle_Hotel</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
 
 
 

@@ -2,6 +2,7 @@ package com.solinpromex.elpasojuarezexperience;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import com.solinpromex.elpasojuarezexperience.CustomListAdapter;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
@@ -29,6 +31,7 @@ import java.util.List;
 
 
 public class PrimaryFragmentDormir extends Fragment {
+    private Button mexbutton;
 
 
     // Log tag
@@ -52,7 +55,7 @@ public class PrimaryFragmentDormir extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-
+        addListenermexButton();
         listView = (ListView) getView().findViewById(R.id.list);
         adapter = new CustomListAdapter(getActivity(), hotelList);
         listView.setAdapter(adapter);
@@ -126,4 +129,24 @@ public class PrimaryFragmentDormir extends Fragment {
         }
     }
 
+    public void addListenermexButton() {
+
+        //Select a specific button to bundle it with the action you want
+//test desde mac 003.3
+        mexbutton = (Button) getView().findViewById(R.id.mexButton);
+
+
+        mexbutton.setOnClickListener(new View.OnClickListener() {
+
+
+            public void onClick(View view) {
+
+                startActivity(new Intent(getActivity() , Detalle_Hotel.class));
+
+
+            }
+
+        });
+
+    }
 }
