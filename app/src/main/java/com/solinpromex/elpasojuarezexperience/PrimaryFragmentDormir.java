@@ -86,11 +86,23 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
 
                                 JSONObject obj = response.getJSONObject(i);
                                 Hotel hotel = new Hotel();
+                                hotel.setId_hotel(obj.getInt("id_hotel"));
                                 hotel.setNombre(obj.getString("nombre_hotel"));
-                                hotel.setZona_hotel(obj.getString("zona_hotel"));
+                                hotel.setDescripcion(obj.getString("descripcion_hotel"));
+                                hotel.setLatitud(obj.getDouble("latitud_hotel"));
+                                hotel.setLongitud(obj.getDouble("longitud_hotel"));
+                                hotel.setDireccion(obj.getString("direccion_hotel"));
+                                hotel.setWeb(obj.getString("web_hotel"));
+                                hotel.setTel_hotel(obj.getString("tel_hotel"));
+                                hotel.setTel_reservas(obj.getString("tel_reservas"));
                                 hotel.setFoto(obj.getString("foto_hotel"));
-                                hotel.setNum_estrellas(obj.getInt("num_estrellas"));
                                 hotel.setCalificacion(obj.getInt("calificacion_hotel"));
+                                hotel.setNum_estrellas(obj.getInt("num_estrellas"));
+                                hotel.setZona_hotel(obj.getString("zona_hotel"));
+                                hotel.setFacebook(obj.getString("facebook_hotel"));
+                                hotel.setTwitter(obj.getString("twitter_hotel"));
+
+
 
 
 
@@ -141,6 +153,8 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
         Hotel hotelActual = (Hotel)adapter.getItem(position);
         String msg = "Elegiste el hotel:n"+hotelActual.getNombre()+"-"+hotelActual.getLlatitud();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+
+        startActivity(new Intent(getActivity(), Detalle_Hotel.class));
 
     }
     public void addListenermexButton() {

@@ -3,17 +3,18 @@ package com.solinpromex.elpasojuarezexperience.model;
 import java.util.ArrayList;
 
 public class Hotel {
-	private String nombre, foto, descripcion,direccion,web,tel_hotel,tel_reservas,zona_hotel;
-	private int num_estrellas;
+	private String nombre, foto, descripcion,direccion,web,tel_hotel,tel_reservas,zona_hotel,facebook,twitter;
+	private int num_estrellas, id;
 	private double calificacion,latitud,longitud;
 
 
 	public Hotel() {
 	}
 
-	public Hotel(String nombre, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas, String zona_hotel,
-				 double calificacion, double latitud, double longitud, int num_estrellas) {
-		this.nombre = nombre;
+	public Hotel(String nombre, String facebook, String twitter, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas, String zona_hotel,
+				 double calificacion, double latitud, double longitud, int num_estrellas, int id) {
+        this.id = id;
+        this.nombre = nombre;
 		this.foto = foto;
 		this.descripcion = descripcion;
         this.direccion = direccion;
@@ -25,6 +26,8 @@ public class Hotel {
 		this.longitud = longitud;
 		this.num_estrellas = num_estrellas;
         this.zona_hotel = zona_hotel;
+        this.facebook = facebook;
+        this.twitter =  twitter;
 	}
 
 	//STRINGS
@@ -94,10 +97,26 @@ public class Hotel {
     public void setZona_hotel(String zona_hotel) {
         this.zona_hotel = zona_hotel;
     }
+    //facebook
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+    //facebook
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.facebook = twitter;
+    }
 
 
 	//INT
-
+    //num_estrellas
 	public int getNum_estrellas() {
 		return num_estrellas;
 	}
@@ -106,7 +125,17 @@ public class Hotel {
 		this.num_estrellas = num_estrellas;
 	}
 
-	//DOUBLE
+    //id_hotel
+    public int getId_hotel() {
+        return id;
+    }
+
+    public void setId_hotel(int id) {
+        this.id = id;
+    }
+
+
+    //DOUBLE
 //calificacion
 	public double getCalificacion() {
 		return calificacion;
