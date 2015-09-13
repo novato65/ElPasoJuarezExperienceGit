@@ -10,7 +10,7 @@ import android.view.MenuItem;
 public class Detalle_Hotel extends AppCompatActivity {
     // Declaring Your View and Variables
 
-    public String nombre_hotel_recibido, foto_hotel, descripcion_hotel,direccion_hotel,web_hotel,tel_hotel,tel_reservas,zona_hotel,facebook_hotel,twitter_hotel;
+    public String nombre_hotel_recibido, foto_hotel_recibido, descripcion_hotel,direccion_hotel,web_hotel,tel_hotel,tel_reservas,zona_hotel,facebook_hotel,twitter_hotel;
     private int num_estrellas_hotel, id_hotel;
     private double calificacion_hotel,latitud_hotel,longitud_hotel;
 
@@ -27,6 +27,8 @@ public class Detalle_Hotel extends AppCompatActivity {
         setContentView(R.layout.activity_detalle__hotel);
 
         nombre_hotel_recibido = getIntent().getStringExtra("nombre_hotel");
+        foto_hotel_recibido = getIntent().getStringExtra("foto_hotel");
+        setTitle(nombre_hotel_recibido);
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
