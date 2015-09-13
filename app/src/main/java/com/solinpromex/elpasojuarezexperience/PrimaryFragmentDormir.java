@@ -147,10 +147,32 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Hotel hotelActual = (Hotel) adapter.getItem(position);
-        String msg = "Elegiste el hotel:n" + hotelActual.getNombre() + "-" + hotelActual.getLlatitud();
+        String msg = "Elegiste el hotel " + hotelActual.getNombre();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-        startActivity(new Intent(getActivity(), Detalle_Hotel.class));
+        Intent intent = new Intent(getActivity(), Detalle_Hotel.class);
+
+        intent.putExtra("id_hotel", hotelActual.getId_hotel());
+        intent.putExtra("nombre_hotel", hotelActual.getNombre());
+        intent.putExtra("descripcion_hotel", hotelActual.getDescripcion());
+        intent.putExtra("latitud_hotel", hotelActual.getLatitud());
+        intent.putExtra("longitud_hotel", hotelActual.getLongitud());
+        intent.putExtra("direccion_hotel", hotelActual.getDireccion());
+        intent.putExtra("web_hotel", hotelActual.getWeb());
+        intent.putExtra("tel_hotel", hotelActual.getTel_hotel());
+        intent.putExtra("tel_reservas", hotelActual.getTel_reservas());
+        intent.putExtra("foto_hotel", hotelActual.getFoto());
+        intent.putExtra("calificacion_hotel", hotelActual.getCalificacion());
+        intent.putExtra("num_estrellas", hotelActual.getNum_estrellas());
+        intent.putExtra("zona_hotel", hotelActual.getZona_hotel());
+        intent.putExtra("facebook_hotel", hotelActual.getFacebook());
+        intent.putExtra("twitter_hotel", hotelActual.getTwitter());
+
+
+        startActivity(intent);
+
+
+
 
     }
 

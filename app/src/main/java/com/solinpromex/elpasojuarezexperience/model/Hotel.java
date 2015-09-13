@@ -145,7 +145,7 @@ public class Hotel {
 		this.calificacion = calificacion;
 	}
     //latitud
-    public double getLlatitud() {
+    public double getLatitud() {
         return latitud;
     }
 

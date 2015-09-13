@@ -10,6 +10,10 @@ import android.view.MenuItem;
 public class Detalle_Hotel extends AppCompatActivity {
     // Declaring Your View and Variables
 
+    public String nombre_hotel_recibido, foto_hotel, descripcion_hotel,direccion_hotel,web_hotel,tel_hotel,tel_reservas,zona_hotel,facebook_hotel,twitter_hotel;
+    private int num_estrellas_hotel, id_hotel;
+    private double calificacion_hotel,latitud_hotel,longitud_hotel;
+
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
@@ -22,6 +26,7 @@ public class Detalle_Hotel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle__hotel);
 
+        nombre_hotel_recibido = getIntent().getStringExtra("nombre_hotel");
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
@@ -56,25 +61,5 @@ public class Detalle_Hotel extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
