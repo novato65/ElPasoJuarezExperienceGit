@@ -118,46 +118,44 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:gravity="bottom"
-            android:background="#f0ff3f"
-           >
+            android:gravity="bottom">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton"
                 android:layout_weight="1"
-                android:src="@drawable/elpaso" />
+                android:src="@drawable/web" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton2"
                 android:layout_weight="1"
-                android:src="@drawable/elpaso" />
+                android:src="@drawable/call" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton3"
                 android:layout_weight="1"
-                android:src="@drawable/elpaso" />
+                android:src="@drawable/reservar" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton4"
                 android:layout_weight="1"
-                android:src="@drawable/elpaso" />
+                android:src="@drawable/facebook" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton5"
                 android:layout_weight="1"
-                android:src="@drawable/elpaso" />
+                android:src="@drawable/twitter" />
         </LinearLayout>
 
     </LinearLayout>
