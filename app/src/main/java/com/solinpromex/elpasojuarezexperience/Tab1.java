@@ -28,8 +28,9 @@ public class Tab1 extends Fragment {
 
     private ProgressDialog pDialog;
     private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
-    private ImageView hotel_foto;
+    private ImageView hotel_foto, estrella1,estrella2,estrella3,estrella4,estrella5;
     private String nombre_hotel, foto_hotel_recibida,direccion_hotel,descripcion_hotel;
+    private Integer numero_estrellas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,10 +59,63 @@ public class Tab1 extends Fragment {
         //ponemos direccion del hotel
         hotel_direccion = (TextView) getView().findViewById(R.id.tvdireccion_hotel);
         hotel_direccion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("direccion_hotel"));
-        //ponemos direccion del hotel
+
+        //ponemos descripcion  del hotel
         hotel_descripcion = (TextView) getView().findViewById(R.id.tvdescripcion_hotel);
         hotel_descripcion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel"));
         hotel_descripcion.setMovementMethod(new ScrollingMovementMethod());
+
+        //pintamos estrellas
+
+        estrella1 = (ImageView) getView().findViewById(R.id.estrella1);
+        estrella2 = (ImageView) getView().findViewById(R.id.estrella2);
+        estrella3 = (ImageView) getView().findViewById(R.id.estrella3);
+        estrella4 = (ImageView) getView().findViewById(R.id.estrella4);
+        estrella5 = (ImageView) getView().findViewById(R.id.estrella5);
+
+        //
+        numero_estrellas = ((Detalle_Hotel) getActivity()).getIntent().getIntExtra("num_estrellas",0);
+
+        if (numero_estrellas ==1){
+            estrella1.setVisibility(View.VISIBLE);
+            estrella2.setVisibility(View.GONE);
+            estrella3.setVisibility(View.GONE);
+            estrella4.setVisibility(View.GONE);
+            estrella5.setVisibility(View.GONE);
+
+        }
+        if (numero_estrellas ==2){
+            estrella1.setVisibility(View.VISIBLE);
+            estrella2.setVisibility(View.VISIBLE);
+            estrella3.setVisibility(View.GONE);
+            estrella4.setVisibility(View.GONE);
+            estrella5.setVisibility(View.GONE);
+
+        }
+        if (numero_estrellas ==3){
+            estrella1.setVisibility(View.VISIBLE);
+            estrella2.setVisibility(View.VISIBLE);
+            estrella3.setVisibility(View.VISIBLE);
+            estrella4.setVisibility(View.GONE);
+            estrella5.setVisibility(View.GONE);
+
+        }
+        if (numero_estrellas ==4){
+            estrella1.setVisibility(View.VISIBLE);
+            estrella2.setVisibility(View.VISIBLE);
+            estrella3.setVisibility(View.VISIBLE);
+            estrella4.setVisibility(View.VISIBLE);
+            estrella5.setVisibility(View.GONE);
+
+        }
+        if (numero_estrellas ==5){
+            estrella1.setVisibility(View.VISIBLE);
+            estrella2.setVisibility(View.VISIBLE);
+            estrella3.setVisibility(View.VISIBLE);
+            estrella4.setVisibility(View.VISIBLE);
+            estrella5.setVisibility(View.VISIBLE);
+
+        }
 
 
     }

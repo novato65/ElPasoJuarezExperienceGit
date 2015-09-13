@@ -16,7 +16,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5">
+            android:layout_weight="0.5"
+            android:paddingLeft="15dp">
 
             <ImageView
                 android:layout_width="120dp"
@@ -30,7 +31,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text Large Text Large Text Large Text"
                 android:id="@+id/nombre_hotel"
-                android:paddingLeft="5dp" />
+                android:paddingLeft="5dp"
+                android:paddingTop="30dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -51,7 +53,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text textView4  textView4  textView4 textView4 textView4 textView4"
                 android:id="@+id/tvdireccion_hotel"
-                android:paddingLeft="5dp"
+                android:paddingLeft="15dp"
                 android:paddingBottom="5dp" />
 
             <LinearLayout
@@ -66,36 +68,38 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="2dp">
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="15dp"
+                    android:layout_gravity="center_horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView4"
+                        android:id="@+id/estrella1"
                         android:src="@drawable/estrella" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView5"
+                        android:id="@+id/estrella2"
                         android:src="@drawable/estrella" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView6"
+                        android:id="@+id/estrella3"
                         android:src="@drawable/estrella" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView7"
+                        android:id="@+id/estrella4"
                         android:src="@drawable/estrella" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageView8"
+                        android:id="@+id/estrella5"
                         android:src="@drawable/estrella" />
                 </LinearLayout>
 
@@ -109,7 +113,9 @@
                     android:maxLines = "10"
 
                     android:scrollbars = "vertical"
-                     />
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp" />
 
             </LinearLayout>
 
