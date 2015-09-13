@@ -16,7 +16,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="0.5">
 
             <ImageView
                 android:layout_width="120dp"
@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text Large Text Large Text Large Text"
-                android:id="@+id/nombre_hotel" />
+                android:id="@+id/nombre_hotel"
+                android:paddingLeft="5dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -42,7 +43,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#7dbcff"
             android:layout_weight="8">
 
             <TextView
@@ -50,23 +50,66 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text textView4  textView4  textView4 textView4 textView4 textView4"
-                android:id="@+id/textView45"
-                android:background="#795eff" />
+                android:id="@+id/tvdireccion_hotel"
+                android:paddingLeft="5dp"
+                android:paddingBottom="5dp" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#7dbcff"
+
+                android:id="@+id/fff"
                 android:layout_weight="8">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="2dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView4"
+                        android:src="@drawable/estrella" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView5"
+                        android:src="@drawable/estrella" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView6"
+                        android:src="@drawable/estrella" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView7"
+                        android:src="@drawable/estrella" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView8"
+                        android:src="@drawable/estrella" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Medium Text textView4  textView4  textView4 textView4 textView4 textView4"
-                    android:id="@+id/textView4"
-                    />
+                    android:id="@+id/tvdescripcion_hotel"
+                    android:textSize="16dp"
+                    android:maxLines = "10"
+
+                    android:scrollbars = "vertical"
+                     />
 
             </LinearLayout>
 
@@ -77,9 +120,9 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="bottom"
-            android:layout_weight="1"
             android:gravity="bottom"
-            android:background="#f0ff3f">
+            android:background="#f0ff3f"
+           >
 
             <ImageButton
                 android:layout_width="wrap_content"

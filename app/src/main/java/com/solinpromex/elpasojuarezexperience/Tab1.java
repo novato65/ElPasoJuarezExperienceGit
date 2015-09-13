@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,9 @@ import java.net.URLConnection;
 public class Tab1 extends Fragment {
 
     private ProgressDialog pDialog;
-    private TextView hotel_nombre;
+    private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
     private ImageView hotel_foto;
-    private String nombre_hotel, foto_hotel_recibida;
+    private String nombre_hotel, foto_hotel_recibida,direccion_hotel,descripcion_hotel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +54,14 @@ public class Tab1 extends Fragment {
         pDialog.setMessage("Procesando datos...");
         pDialog.show();
         new FetchItems().execute();
+
+        //ponemos direccion del hotel
+        hotel_direccion = (TextView) getView().findViewById(R.id.tvdireccion_hotel);
+        hotel_direccion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("direccion_hotel"));
+        //ponemos direccion del hotel
+        hotel_descripcion = (TextView) getView().findViewById(R.id.tvdescripcion_hotel);
+        hotel_descripcion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel"));
+        hotel_descripcion.setMovementMethod(new ScrollingMovementMethod());
 
 
     }
