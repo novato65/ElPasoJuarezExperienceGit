@@ -105,7 +105,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Medium Text textView4  textView4  textView4 textView4 textView4 textView4"
                     android:id="@+id/tvdescripcion_hotel"
@@ -115,7 +115,17 @@
                     android:scrollbars = "vertical"
                     android:paddingLeft="15dp"
                     android:paddingTop="5dp"
-                    android:paddingRight="15dp" />
+                    android:paddingRight="15dp"
+                    android:visibility="gone" />
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/webView"
+                    android:layout_gravity="left"
+                    android:paddingTop="15dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="15dp" />
 
             </LinearLayout>
 

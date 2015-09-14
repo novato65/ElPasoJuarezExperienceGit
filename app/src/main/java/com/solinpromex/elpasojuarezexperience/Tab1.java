@@ -7,10 +7,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
@@ -28,6 +30,7 @@ public class Tab1 extends Fragment {
 
     private ProgressDialog pDialog;
     private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
+    private WebView desc_text;
     private ImageView hotel_foto, estrella1,estrella2,estrella3,estrella4,estrella5;
     private String nombre_hotel, foto_hotel_recibida,direccion_hotel,descripcion_hotel;
     private Integer numero_estrellas;
@@ -62,8 +65,22 @@ public class Tab1 extends Fragment {
 
         //ponemos descripcion  del hotel
         hotel_descripcion = (TextView) getView().findViewById(R.id.tvdescripcion_hotel);
-        hotel_descripcion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel"));
+
+        descripcion_hotel = ((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel");
+
+        //hotel_descripcion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel"));
+
+        hotel_descripcion.setText(Html.fromHtml(descripcion_hotel).toString());
         hotel_descripcion.setMovementMethod(new ScrollingMovementMethod());
+
+        WebView wv = (WebView) getView().findViewById(R.id.webView);
+
+        final String mimeType = "text/html";
+        final String encoding = "UTF-8";
+
+
+
+        wv.loadDataWithBaseURL("", descripcion_hotel, mimeType, encoding, "");
 
         //pintamos estrellas
 
