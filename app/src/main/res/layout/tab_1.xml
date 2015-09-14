@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_weight="8"
-                android:background="#ff101c"
+                android:background="#B00007"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -151,14 +151,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/call" />
+                android:src="@drawable/llamar" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/reservar" />
+                android:src="@drawable/res" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
@@ -172,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/twitter" />
+                android:src="@drawable/googleplus" />
         </LinearLayout>
 
     </LinearLayout>
