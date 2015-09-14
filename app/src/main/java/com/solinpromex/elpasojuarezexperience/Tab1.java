@@ -3,6 +3,7 @@ package com.solinpromex.elpasojuarezexperience;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
@@ -32,8 +35,9 @@ public class Tab1 extends Fragment {
     private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
     private WebView desc_text;
     private ImageView hotel_foto, estrella1,estrella2,estrella3,estrella4,estrella5;
-    private String nombre_hotel, foto_hotel_recibida,direccion_hotel,descripcion_hotel;
+    private String nombre_hotel, foto_hotel_recibida, direccion_hotel, descripcion_hotel, web_hotel;
     private Integer numero_estrellas;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,11 +52,11 @@ public class Tab1 extends Fragment {
 
         //ponemos el nombre del hotel en el textview
         hotel_nombre = (TextView) getView().findViewById(R.id.nombre_hotel);
-        hotel_nombre.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("nombre_hotel"));
+        hotel_nombre.setText(getActivity().getIntent().getStringExtra("nombre_hotel"));
 
         //ponemos foto del hotel en el imageview
         hotel_foto = (ImageView) getView().findViewById(R.id.fotodelhotel);
-        foto_hotel_recibida = ((Detalle_Hotel) getActivity()).getIntent().getStringExtra("foto_hotel");
+        foto_hotel_recibida = getActivity().getIntent().getStringExtra("foto_hotel");
         pDialog = new ProgressDialog(getActivity());
         // Showing progress dialog before making http request
         pDialog.setMessage("Procesando datos...");
@@ -61,12 +65,12 @@ public class Tab1 extends Fragment {
 
         //ponemos direccion del hotel
         hotel_direccion = (TextView) getView().findViewById(R.id.tvdireccion_hotel);
-        hotel_direccion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("direccion_hotel"));
+        hotel_direccion.setText(getActivity().getIntent().getStringExtra("direccion_hotel"));
 
         //ponemos descripcion  del hotel
         hotel_descripcion = (TextView) getView().findViewById(R.id.tvdescripcion_hotel);
 
-        descripcion_hotel = ((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel");
+        descripcion_hotel = getActivity().getIntent().getStringExtra("descripcion_hotel");
 
         //hotel_descripcion.setText(((Detalle_Hotel) getActivity()).getIntent().getStringExtra("descripcion_hotel"));
 
@@ -91,7 +95,7 @@ public class Tab1 extends Fragment {
         estrella5 = (ImageView) getView().findViewById(R.id.estrella5);
 
         //
-        numero_estrellas = ((Detalle_Hotel) getActivity()).getIntent().getIntExtra("num_estrellas",0);
+        numero_estrellas = getActivity().getIntent().getIntExtra("num_estrellas", 0);
 
         if (numero_estrellas ==1){
             estrella1.setVisibility(View.VISIBLE);
@@ -134,9 +138,34 @@ public class Tab1 extends Fragment {
 
         }
 
+        //boton web
+
+        web_hotel = getActivity().getIntent().getStringExtra("web_hotel");
+        ImageButton WebButton = (ImageButton) getView().findViewById(R.id.web_button); // Retrieve the button from the XML file
+        WebButton.setOnClickListener(new View.OnClickListener() {  //Add a listener for when the button is pressed
+            @Override
+            public void onClick(View v) {
+                abrir_web();
+            }
+        });
+
 
     }
 
+    protected void abrir_web() {
+        web_hotel = getActivity().getIntent().getStringExtra("web_hotel");
+        // You could have this at the top of the class as a constant, or pass it in as a method variable, if you wish to send to multiple websites
+        Intent i = new Intent(Intent.ACTION_VIEW); // Create a new intent - stating you want to 'view something'
+        i.setData(Uri.parse(web_hotel));  // Add the url data (allowing android to realise you want to open the browser)
+        startActivity(i); // Go go go!
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
 
     private class FetchItems extends AsyncTask<String, Bitmap, Bitmap> {
 
@@ -195,13 +224,6 @@ public class Tab1 extends Fragment {
                 ex.printStackTrace();
             }
             return stream;
-        }
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
         }
     }
 
