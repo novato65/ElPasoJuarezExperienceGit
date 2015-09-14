@@ -35,7 +35,7 @@ public class Tab1 extends Fragment {
     private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
     private WebView desc_text;
     private ImageView hotel_foto, estrella1,estrella2,estrella3,estrella4,estrella5;
-    private String nombre_hotel, foto_hotel_recibida, direccion_hotel, descripcion_hotel, web_hotel, tel_hotel, tel_reservar;
+    private String nombre_hotel, foto_hotel_recibida, direccion_hotel, descripcion_hotel, web_hotel, tel_hotel, tel_reservar, facebook_hotel;
     private Integer numero_estrellas;
 
 
@@ -174,6 +174,18 @@ public class Tab1 extends Fragment {
             }
         });
 
+        //boton facebook
+
+        facebook_hotel = getActivity().getIntent().getStringExtra("facebook_hotel");
+        ImageButton FacebookButton = (ImageButton) getView().findViewById(R.id.botofacebook); // Retrieve the button from the XML file
+        FacebookButton.setOnClickListener(new View.OnClickListener() {  //Add a listener for when the button is pressed
+            @Override
+            public void onClick(View v) {
+                abrir_facebook();
+            }
+        });
+
+
 
     }
 
@@ -182,6 +194,14 @@ public class Tab1 extends Fragment {
         // You could have this at the top of the class as a constant, or pass it in as a method variable, if you wish to send to multiple websites
         Intent i = new Intent(Intent.ACTION_VIEW); // Create a new intent - stating you want to 'view something'
         i.setData(Uri.parse(web_hotel));  // Add the url data (allowing android to realise you want to open the browser)
+        startActivity(i); // Go go go!
+    }
+
+    protected void abrir_facebook() {
+        facebook_hotel = getActivity().getIntent().getStringExtra("facebook_hotel");
+        // You could have this at the top of the class as a constant, or pass it in as a method variable, if you wish to send to multiple websites
+        Intent i = new Intent(Intent.ACTION_VIEW); // Create a new intent - stating you want to 'view something'
+        i.setData(Uri.parse(facebook_hotel));  // Add the url data (allowing android to realise you want to open the browser)
         startActivity(i); // Go go go!
     }
 

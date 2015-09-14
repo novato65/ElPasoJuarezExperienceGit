@@ -111,7 +111,7 @@ public class Hotel {
     }
 
     public void setTwitter(String twitter) {
-        this.facebook = twitter;
+        this.twitter = twitter;
     }
 
 
