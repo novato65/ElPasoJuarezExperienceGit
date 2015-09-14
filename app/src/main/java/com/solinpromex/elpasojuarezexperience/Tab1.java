@@ -35,7 +35,7 @@ public class Tab1 extends Fragment {
     private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
     private WebView desc_text;
     private ImageView hotel_foto, estrella1,estrella2,estrella3,estrella4,estrella5;
-    private String nombre_hotel, foto_hotel_recibida, direccion_hotel, descripcion_hotel, web_hotel, tel_hotel;
+    private String nombre_hotel, foto_hotel_recibida, direccion_hotel, descripcion_hotel, web_hotel, tel_hotel, tel_reservar;
     private Integer numero_estrellas;
 
 
@@ -156,6 +156,18 @@ public class Tab1 extends Fragment {
             @Override
             public void onClick(View v) {
                 String number = tel_hotel;
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + number));
+                startActivity(intent);
+            }
+        });
+        //boton reservar
+        tel_reservar = getActivity().getIntent().getStringExtra("tel_reservas");
+        ImageButton ReservarButton = (ImageButton) getView().findViewById(R.id.botonreservar); // Retrieve the button from the XML file
+        ReservarButton.setOnClickListener(new View.OnClickListener() {  //Add a listener for when the button is pressed
+            @Override
+            public void onClick(View v) {
+                String number = tel_reservar;
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:" + number));
                 startActivity(intent);
