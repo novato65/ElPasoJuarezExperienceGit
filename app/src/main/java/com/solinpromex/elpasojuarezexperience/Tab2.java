@@ -63,11 +63,19 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
     private View view;
     private Context mContext;
+
+    private double latitud_del_hotel, longitud_del_hotel;
+    private String nombre_del_hotel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.tab_2, container, false);
 
         mContext = getActivity();
+
+        nombre_del_hotel = getActivity().getIntent().getStringExtra("nombre_hotel");
+        latitud_del_hotel = getActivity().getIntent().getDoubleExtra("latitud_hotel", 0);
+        longitud_del_hotel = getActivity().getIntent().getDoubleExtra("longitud_hotel",0);
+
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -84,11 +92,11 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap map) {
         //map is ready
         // latitude and longitude
-        double latitude = 13.0294278;
-        double longitude =80.24667829999999;
+        double latitude = latitud_del_hotel;
+        double longitude =longitud_del_hotel;
 
         // create marker
-        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("Hello Maps").icon(BitmapDescriptorFactory.fromResource(R.drawable.estrella));
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel1star));
 
         // Changing marker icon
         // marker.icon(BitmapDescriptorFactory
@@ -96,8 +104,9 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
         // adding marker
         map.addMarker(marker);
+        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(13.0294278, 80.24667829999999)).zoom(12).build();
+                .target(new LatLng(latitud_del_hotel, longitud_del_hotel)).zoom(15).build();
         map.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
     }
