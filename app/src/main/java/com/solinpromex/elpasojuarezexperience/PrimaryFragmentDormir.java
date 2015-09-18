@@ -67,7 +67,7 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
 
         pDialog = new ProgressDialog(getActivity());
         // Showing progress dialog before making http request
-        pDialog.setMessage("Procesando datos...");
+        pDialog.setMessage("Procesando hoteles...");
         pDialog.show();
 
 

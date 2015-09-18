@@ -4,13 +4,20 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageButton
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/hotel"
-        android:layout_centerVertical="true"
-        android:textColor="@color/tabsScrollColor"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/imageButton"
+        android:background="#ff113f" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_row_selector"
+        android:layout_below="@id/imageButton"/>
+
 
 </RelativeLayout>
