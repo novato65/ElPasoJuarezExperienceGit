@@ -18,7 +18,9 @@
     <string name="mexNombre">Escriba su nombre</string>
     <string name="usaBienvenida">Welcome to El Paso - Juarez Experience</string>
     <string name="title_activity_detalle__hotel">Detalle_Hotel</string>
-
+    <string name="mexComentariosHotel"> Puede colaborar a mejorar El Paso - Juárez Experience enviando su opinión y calificando este lugar.
+        Escriba su nombre de usuario y su email (su email NO SERA VISIBLE EN LA APP). Una vez enviados estos datos y validada su dirección email, su opinión y valoración aparecerán en esta
+    aplicación.</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

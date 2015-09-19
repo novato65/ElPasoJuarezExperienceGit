@@ -8,7 +8,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
-        android:background="#b00007"
         android:src="@drawable/comentarios" />
 
     <ListView
