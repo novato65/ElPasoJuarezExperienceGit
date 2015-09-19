@@ -14,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+
 
         <ImageView
             android:layout_width="85dp"
@@ -23,37 +25,30 @@
             android:src="@drawable/escudo_juarez"
             android:scaleType="centerInside" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="CIUDAD JUAREZ, CHIHUHAUA, MEXICO"
-            android:id="@+id/textView55"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:gravity="center"/>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/separador" />
-
         <ImageView
             android:layout_width="95dp"
-            android:layout_height="105dp"
+            android:layout_height="113dp"
             android:id="@+id/imageView3"
             android:src="@drawable/elpaso" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="EL PASO, TEXAS, USA"
-            android:id="@+id/textView2"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:gravity="center"
-            />
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+
+        android:src="@drawable/up"
+        android:layout_marginLeft="0dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Seleccione aquí para abrir el menú"
+        android:layout_toRightOf="@id/imageView4"
+        android:id="@+id/textView4"
+        android:paddingTop="15dp"
+        android:textColor="#ffffff" />
 </RelativeLayout>
