@@ -11,7 +11,7 @@ public class Detalle_Hotel extends AppCompatActivity {
     // Declaring Your View and Variables
 
     public String nombre_hotel_recibido, foto_hotel_recibido, descripcion_hotel_recibido,direccion_hotel_recibido,web_hotel,tel_hotel,tel_reservas,zona_hotel,facebook_hotel,twitter_hotel;
-    private int hotel_num_estrellas, id_hotel;
+    private int hotel_num_estrellas, id_hotel_recibido;
     private double calificacion_hotel,latitud_hotel,longitud_hotel;
 
     Toolbar toolbar;
@@ -30,7 +30,10 @@ public class Detalle_Hotel extends AppCompatActivity {
         direccion_hotel_recibido = getIntent().getStringExtra("direccion_hotel");
         descripcion_hotel_recibido = getIntent().getStringExtra("descripcion_hotel");
         foto_hotel_recibido = getIntent().getStringExtra("foto_hotel");
-        hotel_num_estrellas = getIntent().getIntExtra("num_estrellas",0);
+        hotel_num_estrellas = getIntent().getIntExtra("num_estrellas", 0);
+
+        id_hotel_recibido = getIntent().getIntExtra("id_hotel",0);
+
         setTitle(nombre_hotel_recibido);
 
         // Creating The Toolbar and setting it as the Toolbar for the activity

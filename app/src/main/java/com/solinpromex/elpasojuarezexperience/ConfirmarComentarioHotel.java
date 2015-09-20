@@ -1,40 +1,26 @@
 package com.solinpromex.elpasojuarezexperience;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class NuevoComentarioHotel extends AppCompatActivity  {
+public class ConfirmarComentarioHotel extends AppCompatActivity  {
 
-    private TextView hotel_calificado,valor_calificacion,user_name_texto,opinion_texto, user_email_texto;
+    private TextView hotel_calificado,valor_calificacion;
     private String user_email, id_del_hotel, nombre_del_hotel;
     private int hotel_id;
-    private Button boton_enviar;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nuevo_comentario_hotel);
+        setContentView(R.layout.activity_confirmar_comentario_hotel);
 
         SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar);
 
         hotel_calificado = (TextView) findViewById(R.id.hotel_calificado);
-
         valor_calificacion = (TextView) findViewById(R.id.valor_calificacion);
-
-        user_name_texto = (TextView) findViewById(R.id.etusername);
-        opinion_texto = (TextView) findViewById(R.id.editText);
-        valor_calificacion = (TextView) findViewById(R.id.valor_calificacion);
-        user_email_texto = (TextView) findViewById(R.id.etemail);
 
 
 
@@ -47,9 +33,9 @@ public class NuevoComentarioHotel extends AppCompatActivity  {
        // hotel_calificado.setText(id_del_hotel);
 
 
+        //de prueba
+        //hotel_calificado.setText(hotel_calificado);
         seekbar.setProgress(5);
-
-        addListenerBotonEnviar();
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress,
@@ -70,34 +56,5 @@ public class NuevoComentarioHotel extends AppCompatActivity  {
         //TEST
     }
 
-    public void addListenerBotonEnviar() {
-
-        //Select a specific button to bundle it with the action you want
-//test desde mac 003.3
-        boton_enviar = (Button) findViewById(R.id.button);
-
-
-        boton_enviar.setOnClickListener(new View.OnClickListener() {
-
-
-            public void onClick(View view) {
-
-                Intent intent = new Intent(NuevoComentarioHotel.this, ConfirmarComentarioHotel.class);
-
-                intent.putExtra("id_hotel", id_del_hotel);
-                intent.putExtra("user_name", user_name_texto.getText());
-                intent.putExtra("opinion", opinion_texto.getText());
-                intent.putExtra("valoracion", valor_calificacion.getText());
-                intent.putExtra("email", user_email_texto.getText());
-
-
-                startActivity(intent);
-
-
-            }
-
-        });
-
-    }
 
 }

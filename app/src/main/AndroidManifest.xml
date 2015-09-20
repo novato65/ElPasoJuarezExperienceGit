@@ -46,7 +46,11 @@
             android:label="@string/title_activity_detalle__hotel" >
         </activity>
         <activity
-            android:name=".NuevoComentarioHotel"
+        android:name=".NuevoComentarioHotel"
+        android:label="@string/title_activity_nuevo_comentario_hotel" >
+    </activity>
+        <activity
+            android:name=".ConfirmarComentarioHotel"
             android:label="@string/title_activity_nuevo_comentario_hotel" >
         </activity>
     </application>

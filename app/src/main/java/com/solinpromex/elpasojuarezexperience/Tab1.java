@@ -35,8 +35,8 @@ public class Tab1 extends Fragment {
     private TextView hotel_nombre, hotel_direccion,hotel_descripcion;
     private WebView desc_text;
     private ImageView hotel_foto, estrella1,estrella2,estrella3,estrella4,estrella5;
-    private String nombre_hotel, foto_hotel_recibida, direccion_hotel, descripcion_hotel, web_hotel, tel_hotel, tel_reservar, facebook_hotel, google_hotel;
-    private Integer numero_estrellas;
+    private String nombre_hotel, foto_hotel_recibida, direccion_hotel,id_hotel_string, descripcion_hotel, web_hotel, tel_hotel, tel_reservar, facebook_hotel, google_hotel;
+    private Integer numero_estrellas,id_hotel;
 
 
     @Override
@@ -49,10 +49,13 @@ public class Tab1 extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-
+        id_hotel = getActivity().getIntent().getIntExtra("id_hotel", 0);
         //ponemos el nombre del hotel en el textview
         hotel_nombre = (TextView) getView().findViewById(R.id.nombre_hotel);
+        id_hotel_string = String.valueOf(id_hotel);
+
         hotel_nombre.setText(getActivity().getIntent().getStringExtra("nombre_hotel"));
+
 
         //ponemos foto del hotel en el imageview
         hotel_foto = (ImageView) getView().findViewById(R.id.fotodelhotel);
@@ -96,6 +99,7 @@ public class Tab1 extends Fragment {
 
         //
         numero_estrellas = getActivity().getIntent().getIntExtra("num_estrellas", 0);
+
 
         if (numero_estrellas ==1){
             estrella1.setVisibility(View.VISIBLE);

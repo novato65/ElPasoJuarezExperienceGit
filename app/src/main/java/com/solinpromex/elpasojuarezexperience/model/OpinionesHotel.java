@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class OpinionesHotel {
 	private String user_name,opinion,nombre_hotel,imagen_hotel,fecha;
-	private int id_opinion_hotel,user_id;
+	private int id_opinion_hotel;
 	private double valoracion;
 
 
@@ -12,14 +12,14 @@ public class OpinionesHotel {
 	public OpinionesHotel() {
 	}
 
-	public OpinionesHotel(String user_name,String opinion, String fecha, String nombre_hotel,String imagen_hotel, int id_opinion_hotel,int user_id,
+	public OpinionesHotel(String user_name,String opinion, String fecha, String nombre_hotel,String imagen_hotel, int id_opinion_hotel,
                           double valoracion) {
-        this.user_id = user_id;
+
         this.user_name = user_name;
 		this.opinion = opinion;
         this.nombre_hotel = nombre_hotel;
         this.id_opinion_hotel = id_opinion_hotel;
-        this.user_id = user_id;
+
         this.valoracion = valoracion;
         this.fecha = fecha;
         this.imagen_hotel = imagen_hotel;
@@ -81,14 +81,6 @@ public class OpinionesHotel {
 		this.id_opinion_hotel = id_opinion_hotel;
 	}
 
-    //user_id
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
 
 
 

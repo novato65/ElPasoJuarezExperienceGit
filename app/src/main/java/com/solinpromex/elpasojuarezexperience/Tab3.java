@@ -39,8 +39,9 @@ public class Tab3 extends Fragment {
     private Integer id_hotel;
 
     private Integer hotel_id;
-    private String nombre_hotel;
+    private String nombre_hotel,id_hotel_string;
 
+    private TextView tv_id_hotel;
 
     private ProgressDialog pDialog;
     private List<OpinionesHotel> opinioneshotelList = new ArrayList<OpinionesHotel>();
@@ -62,9 +63,7 @@ public class Tab3 extends Fragment {
 
         addListenermexButton();
 
-        //id del hotel
 
-        hotel_id = getActivity().getIntent().getIntExtra("id_hotel", 0);
 
         //preparacion de la lista
         listView = (ListView) getView().findViewById(R.id.list);
@@ -80,7 +79,7 @@ public class Tab3 extends Fragment {
         // Showing progress dialog before making http request
         pDialog.setMessage("Procesando opiniones...");
         pDialog.show();
-
+        hotel_id = getActivity().getIntent().getIntExtra("id_hotel", 0);
 
         String url = "http://solinpromex.com/epje/php/recuperar_opiniones_hotel.php?id="+hotel_id;
 
@@ -102,7 +101,7 @@ public class Tab3 extends Fragment {
                                 opinioneshotel.setUser_name(obj.getString("user_name"));
                                 opinioneshotel.setFecha(obj.getString("fecha"));
                                 opinioneshotel.setOpinion(obj.getString("opinion"));
-                                opinioneshotel.setUser_id(obj.getInt("user_id"));
+
                                 opinioneshotel.setValoracion(obj.getDouble("valoracion"));
                                 opinioneshotel.setimagen_hotel_name(obj.getString("imagen_hotel"));
 
@@ -169,7 +168,7 @@ public class Tab3 extends Fragment {
                 hotel_id = getActivity().getIntent().getIntExtra("id_hotel", 0);
                 nombre_hotel = getActivity().getIntent().getStringExtra("nombre_hotel");
 
-                intent.putExtra("id_hotel", id_hotel);
+                intent.putExtra("id_hotel", hotel_id);
                 intent.putExtra("nombre_hotel", nombre_hotel);
 
 
