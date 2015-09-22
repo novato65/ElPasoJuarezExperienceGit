@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class NuevoComentarioHotel extends AppCompatActivity  {
 
     private TextView hotel_calificado,valor_calificacion,user_name_texto,opinion_texto, user_email_texto;
-    private String user_email, id_del_hotel, nombre_del_hotel;
+    private String user_email, id_del_hotel, nombre_del_hotel,user_name,opinion_del_usuario;
     private int hotel_id;
     private Button boton_enviar;
 
@@ -84,11 +84,17 @@ public class NuevoComentarioHotel extends AppCompatActivity  {
 
                 Intent intent = new Intent(NuevoComentarioHotel.this, ConfirmarComentarioHotel.class);
 
+                user_name = user_name_texto.getText().toString();
+                opinion_del_usuario = opinion_texto.getText().toString();
+                user_email = user_email_texto.getText().toString();
+
                 intent.putExtra("id_hotel", id_del_hotel);
-                intent.putExtra("user_name", user_name_texto.getText());
-                intent.putExtra("opinion", opinion_texto.getText());
+                intent.putExtra("user_name", user_name);
+                intent.putExtra("opinion", opinion_del_usuario);
                 intent.putExtra("valoracion", valor_calificacion.getText());
-                intent.putExtra("email", user_email_texto.getText());
+                intent.putExtra("email", user_email);
+
+                intent.putExtra("nombre_hotel", hotel_calificado.getText());
 
 
                 startActivity(intent);
