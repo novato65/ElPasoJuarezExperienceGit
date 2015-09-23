@@ -1,11 +1,27 @@
 package com.solinpromex.elpasojuarezexperience;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfirmarComentarioHotel extends AppCompatActivity {
 
@@ -16,6 +32,9 @@ public class ConfirmarComentarioHotel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_comentario_hotel);
+
+
+        id_hotel = getIntent().getStringExtra("id_hotel");
 
         tvNombreHotel = (TextView) findViewById(R.id.textView9);
         nombre_hotel = getIntent().getStringExtra("nombre_hotel");
@@ -37,9 +56,92 @@ public class ConfirmarComentarioHotel extends AppCompatActivity {
         valoracion = getIntent().getStringExtra("valoracion");
         tvCalificacion.setText(valoracion);
 
-
-
-
+        //db   user_name = user_name
+        //      hotel_id = id_hotel
+        //      opinion = opinion
+        //      valoracion = valoracion
+        //      user_email = email
     }
 
+    public void enviar(View view){
+        String user_name_db = user_name;
+
+        String hotel_id_db = id_hotel;
+
+        String  opinion_db = opinion;
+
+        String valoracion_db = valoracion;
+
+        String user_email_db = email;
+
+        insertToDatabase(user_name_db,hotel_id_db, opinion_db, valoracion_db, user_email_db);
+    }
+
+    private void insertToDatabase(String hotel_id_insert, String opinion_insert, String valoracion_insert, String user_email_insert,
+                                  String user_name_insert){
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                String paramHotel_id = params[0];
+                String paramOpinion = params [1];
+                String paramValoracion = params [2];
+                String paramUser_email = params [3];
+                String paramUser_name = params [4];
+
+
+                String valor0 = id_hotel;
+                String valor1 = opinion;
+                String valor2 = valoracion;
+                String valor3 = email;
+                String valor4 = user_name;
+                String valor5 = nombre_hotel;
+
+
+
+
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("valor0", valor0));
+
+                nameValuePairs.add(new BasicNameValuePair("valor1", valor1));
+
+                nameValuePairs.add(new BasicNameValuePair("valor2", valor2));
+
+                nameValuePairs.add(new BasicNameValuePair("valor3", valor3));
+
+                nameValuePairs.add(new BasicNameValuePair("valor4", valor4));
+                nameValuePairs.add(new BasicNameValuePair("valor5", valor5));
+
+                try {
+                    HttpClient httpClient = new DefaultHttpClient();
+                    HttpPost httpPost = new HttpPost(
+                            "http://solinpromex.com/epje/php/insertar_opinion.php");
+                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                    HttpResponse response = httpClient.execute(httpPost);
+
+                    HttpEntity entity = response.getEntity();
+
+
+                } catch (ClientProtocolException e) {
+
+                } catch (IOException e) {
+
+                }
+                return "success";
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                //TextView textViewResult = (TextView) findViewById(R.id.textViewResult);
+                //textViewResult.setText("Inserted");
+            }
+        }
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(id_hotel,opinion,valoracion,email,user_name);
+    }
 }
