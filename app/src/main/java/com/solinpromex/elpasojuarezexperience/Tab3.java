@@ -172,6 +172,7 @@ public class Tab3 extends Fragment {
                 intent.putExtra("nombre_hotel", nombre_hotel);
 
 
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 startActivity(intent);
 

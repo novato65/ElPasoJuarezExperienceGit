@@ -96,14 +96,22 @@ public class NuevoComentarioHotel extends AppCompatActivity  {
 
                 intent.putExtra("nombre_hotel", hotel_calificado.getText());
 
-
-                startActivity(intent);
+                int REQUEST_CODE = 123;
+                startActivityForResult(intent, REQUEST_CODE);
 
 
             }
 
         });
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 123) {
+            if (resultCode == RESULT_OK) {
+                finish();
+            }
+        }
     }
 
 }

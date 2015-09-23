@@ -1,9 +1,12 @@
 package com.solinpromex.elpasojuarezexperience;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +30,7 @@ public class ConfirmarComentarioHotel extends AppCompatActivity {
 
     private String user_name, id_hotel,opinion,valoracion,email,nombre_hotel;
     private TextView tvNombreHotel,tvOpinion,tvCalificacion,tvUsername,tvEmail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,9 @@ public class ConfirmarComentarioHotel extends AppCompatActivity {
         //      user_email = email
     }
 
+    public void cancelar(View view){
+        finish();
+    }
     public void enviar(View view){
         String user_name_db = user_name;
 
@@ -129,7 +136,7 @@ public class ConfirmarComentarioHotel extends AppCompatActivity {
                 } catch (IOException e) {
 
                 }
-                return "success";
+                return "Datos enviados..una vez confirmado su email, publicaremos su opinión y valoración.";
             }
 
             @Override
@@ -137,11 +144,20 @@ public class ConfirmarComentarioHotel extends AppCompatActivity {
                 super.onPostExecute(result);
 
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                //TextView textViewResult = (TextView) findViewById(R.id.textViewResult);
-                //textViewResult.setText("Inserted");
+                setResultOkSoSecondActivityWontBeShown();
+                finish();
+
             }
         }
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(id_hotel,opinion,valoracion,email,user_name);
+        sendPostReqAsyncTask.execute(id_hotel, opinion, valoracion, email, user_name);
+    }
+    private void setResultOkSoSecondActivityWontBeShown() {
+        Intent intent = new Intent();
+        if (getParent() == null) {
+            setResult(Activity.RESULT_OK, intent);
+        } else {
+            getParent().setResult(Activity.RESULT_OK, intent);
+        }
     }
 }
