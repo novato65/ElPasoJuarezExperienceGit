@@ -7,7 +7,7 @@ public class Hotel {
 	private int num_estrellas, id;
 	private double calificacion,latitud,longitud;
 
-
+//SOLO PAR
 	public Hotel() {
 	}
 
