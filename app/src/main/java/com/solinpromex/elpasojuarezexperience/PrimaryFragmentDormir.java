@@ -95,7 +95,7 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
                                 hotel.setTel_hotel(obj.getString("tel_hotel"));
                                 hotel.setTel_reservas(obj.getString("tel_reservas"));
                                 hotel.setFoto(obj.getString("foto_hotel"));
-                                hotel.setCalificacion(obj.getInt("calificacion_hotel"));
+                                hotel.setCalificacion(obj.getDouble("calificacion_hotel"));
                                 hotel.setNum_estrellas(obj.getInt("num_estrellas"));
                                 hotel.setZona_hotel(obj.getString("zona_hotel"));
                                 hotel.setFacebook(obj.getString("facebook_hotel"));
