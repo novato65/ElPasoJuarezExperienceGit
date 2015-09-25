@@ -29,22 +29,22 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Nombre de usuario"
         android:ems="10"
         android:layout_below="@id/textView3"
         android:id="@+id/etusername"
         android:imeOptions="actionNext"
-        android:textColor="#cdcdcd" />
+        android:textColor="#cdcdcd"
+        android:hint="Nombre de usuario" />
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:text="Email"
         android:ems="10"
         android:layout_below="@id/etusername"
         android:id="@+id/etemail"
         android:imeOptions="actionNext"
-        android:textColor="#cdcdcd" />
+        android:textColor="#cdcdcd"
+        android:hint="Email" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -54,10 +54,10 @@
         android:layout_below="@id/etemail"
         android:id="@+id/editText"
         android:imeOptions="actionDone"
-        android:text="Su opinión"
         android:scrollHorizontally="false"
         android:lines="2"
-        android:textColor="#cdcdcd" />
+        android:textColor="#cdcdcd"
+        android:hint="Su opinión" />
 
     <TextView android:text="Su valoración de 0 a 10 de:"
         android:layout_width="fill_parent"
