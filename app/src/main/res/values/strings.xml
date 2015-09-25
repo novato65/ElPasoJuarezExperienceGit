@@ -19,6 +19,8 @@
     <string name="usaBienvenida">Welcome to El Paso - Juarez Experience</string>
     <string name="title_activity_detalle__hotel">Detalle_Hotel</string>
     <string name="mexComentariosHotel"> Escriba su nombre de usuario, email (NO SERA VISIBLE EN LA APP), opinión y valoración.</string>
+    <string name="mexSolicitar"> Escriba su nombre, email (NO SERA VISIBLE EN LA APP) y solicitud.</string>
+
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

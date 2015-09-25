@@ -51,4 +51,14 @@
         android:id="@+id/textView4"
         android:paddingTop="15dp"
         android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="ENVIAR SOLICITUD PARA APARECER EN LA APP"
+        android:id="@+id/solicitud"
+        android:layout_gravity="bottom"
+        android:onClick="solicitar"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

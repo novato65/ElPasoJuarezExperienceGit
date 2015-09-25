@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.solinpromex.elpasojuarezexperience.NuevoComentarioHotel"
+    android:background="@drawable/fondo">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Su solicitud:"
+        android:id="@+id/textView2"
+        android:textStyle="bold"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="su solicitud"
+        android:id="@+id/susolicitud"
+        android:layout_below="@id/textView2"
+        android:maxLines="6"
+        android:textSize="15sp"
+        android:editable="false"
+        android:inputType="none"
+        android:minLines="3"
+        android:textColor="#cdcdcd"
+        android:gravity="left|top" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textView8"
+        android:layout_below="@id/susolicitud" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aceptar y enviar"
+        android:id="@+id/button2"
+        android:layout_below="@id/textView8"
+        android:onClick="enviar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:id="@+id/button3"
+        android:layout_toRightOf="@id/button2"
+        android:layout_below="@id/textView8"
+        android:onClick="cancelar" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Antes de atender su solicitud, recibirá un email en la dirección indicada, al que deberá responder parar validar su existencia."
+        android:id="@+id/textView10"
+
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_below="@id/button2"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="su nombre"
+        android:id="@+id/sunombre"
+        android:textStyle="bold"
+        android:textColor="#cccccc"
+        android:layout_below="@id/textView10" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="su nombre"
+        android:id="@+id/suemail"
+        android:textStyle="bold"
+        android:textColor="#cccccc"
+        android:layout_below="@id/sunombre" />
+
+
+</RelativeLayout>

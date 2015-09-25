@@ -54,6 +54,14 @@
             android:name=".ConfirmarComentarioHotel"
             android:label="@string/title_activity_nuevo_comentario_hotel" >
         </activity>
+        <activity
+            android:name=".NuevaSolicitudAparecer"
+            android:label="@string/title_activity_nuevo_comentario_hotel" >
+        </activity>
+        <activity
+            android:name=".ConfirmarSolicitud"
+            android:label="@string/title_activity_nuevo_comentario_hotel" >
+        </activity>
     </application>
 
 </manifest>
