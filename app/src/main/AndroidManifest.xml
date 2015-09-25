@@ -31,7 +31,8 @@
 
         <activity
             android:name=".Inicio"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,27 +41,33 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Detalle_Hotel"
-            android:label="@string/title_activity_detalle__hotel" >
+            android:label="@string/title_activity_detalle__hotel"
+            android:screenOrientation="portrait">
         </activity>
         <activity
         android:name=".NuevoComentarioHotel"
-        android:label="@string/title_activity_nuevo_comentario_hotel" >
+        android:label="@string/title_activity_nuevo_comentario_hotel"
+            android:screenOrientation="portrait">
     </activity>
         <activity
             android:name=".ConfirmarComentarioHotel"
-            android:label="@string/title_activity_nuevo_comentario_hotel" >
+            android:label="@string/title_activity_nuevo_comentario_hotel"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".NuevaSolicitudAparecer"
-            android:label="@string/title_activity_nuevo_comentario_hotel" >
+            android:label="@string/title_activity_nuevo_comentario_hotel"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ConfirmarSolicitud"
-            android:label="@string/title_activity_nuevo_comentario_hotel" >
+            android:label="@string/title_activity_nuevo_comentario_hotel"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

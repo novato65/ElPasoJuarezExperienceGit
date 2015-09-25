@@ -80,6 +80,7 @@ public class CustomListAdapter extends BaseAdapter {
 		//calificacion
 		calificacion.setText("Valoración: " + String.valueOf(m.getCalificacion()));
 
+
 		return convertView;
 	}
 
