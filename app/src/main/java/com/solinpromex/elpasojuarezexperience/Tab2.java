@@ -96,7 +96,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
         double longitude =longitud_del_hotel;
 
         // create marker
-        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel1star));
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.poi));
 
         // Changing marker icon
         // marker.icon(BitmapDescriptorFactory

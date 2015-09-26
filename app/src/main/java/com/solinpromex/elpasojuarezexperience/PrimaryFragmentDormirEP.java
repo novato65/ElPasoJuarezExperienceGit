@@ -3,8 +3,6 @@ package com.solinpromex.elpasojuarezexperience;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,27 +11,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.solinpromex.elpasojuarezexperience.CustomListAdapter;
-import com.solinpromex.elpasojuarezexperience.app.AppController;
-import com.solinpromex.elpasojuarezexperience.model.Hotel;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.solinpromex.elpasojuarezexperience.app.AppController;
+import com.solinpromex.elpasojuarezexperience.model.Hotel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class SocialFragmentDormir extends Fragment implements AdapterView.OnItemClickListener {
+public class PrimaryFragmentDormirEP extends Fragment implements AdapterView.OnItemClickListener {
 
 
 
@@ -41,17 +37,17 @@ public class SocialFragmentDormir extends Fragment implements AdapterView.OnItem
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://solinpromex.com/epje/php/recuperar_hoteles_ep.php";
+    private static final String url = "http://solinpromex.com/epje/php/recuperar_hoteles.php";
     private ProgressDialog pDialog;
     private List<Hotel> hotelList = new ArrayList<Hotel>();
     private ListView listView;
-    private CustomListAdapterEP adapter;
+    private CustomListAdapter adapter;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.social_layout_dormir, null);
+        return inflater.inflate(R.layout.primary_layout_dormir, null);
     }
 
     @Override
@@ -60,7 +56,7 @@ public class SocialFragmentDormir extends Fragment implements AdapterView.OnItem
 
 
         listView = (ListView) getView().findViewById(R.id.list);
-        adapter = new CustomListAdapterEP(getActivity(), hotelList);
+        adapter = new CustomListAdapter(getActivity(), hotelList);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(this);
