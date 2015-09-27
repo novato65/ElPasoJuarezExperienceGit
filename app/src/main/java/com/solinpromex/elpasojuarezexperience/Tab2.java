@@ -60,6 +60,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
 import com.solinpromex.elpasojuarezexperience.model.Hotel;
+import com.solinpromex.elpasojuarezexperience.model.POI;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,11 +83,11 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
     private Context mContext;
 
     private double latitud_del_hotel, longitud_del_hotel;
-    private String nombre_del_hotel;
+    private String nombre_del_hotel,direccion_del_hotel;
 
     private static final String url = "http://solinpromex.com/epje/php/recuperar_marcadores.php";
     private ProgressDialog pDialog;
-    private List<Hotel> hotelList = new ArrayList<Hotel>();
+    private List<POI> POIList = new ArrayList<POI>();
 
     private Button mostrarButton;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -102,6 +103,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
         mContext = getActivity();
 
         nombre_del_hotel = getActivity().getIntent().getStringExtra("nombre_hotel");
+        direccion_del_hotel = getActivity().getIntent().getStringExtra("direccion_hotel");
         latitud_del_hotel = getActivity().getIntent().getDoubleExtra("latitud_hotel", 0);
         longitud_del_hotel = getActivity().getIntent().getDoubleExtra("longitud_hotel",0);
 
@@ -152,7 +154,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
         double longitude =longitud_del_hotel;
 
         // create marker
-        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.poi));
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).snippet(direccion_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.poi));
 
         // Changing marker icon
         // marker.icon(BitmapDescriptorFactory
@@ -192,12 +194,13 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
 
                                         JSONObject obj = (JSONObject) response.getJSONObject(i);
-                                        Hotel hotel = new Hotel();
+                                        POI poi = new POI();
 
-                                        hotel.setNombre(obj.getString("nombre_hotel"));
-                                        hotel.setLatitud(obj.getDouble("latitud_hotel"));
-                                        hotel.setLongitud(obj.getDouble("longitud_hotel"));
-                                        hotel.setDireccion(obj.getString("direccion_hotel"));
+                                        poi.setNombre_POI(obj.getString("nombre_hotel"));
+                                        poi.setLatitud_POI(obj.getString("latitud_hotel"));
+                                        poi.setLongitud_POI(obj.getString("longitud_hotel"));
+                                        poi.setDireccion_POI(obj.getString("direccion_hotel"));
+                                        poi.setDireccion_POI(obj.getString("tipo_poi"));
 
                                         String nombre = obj.optString("nombre_hotel");
                                         Log.d("NOMBRE=", nombre);
@@ -208,13 +211,31 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
                                         String longitud = obj.optString("longitud_hotel");
                                         double longitud_del_hotel = Double.parseDouble(longitud);
 
+                                        String tipo_poi = obj.optString("tipo_poi");
+                                        Log.d("NOMBRE=", nombre);
+                                        String direccion_poi = obj.optString("direccion_hotel");
+                                        Log.d("NOMBRE=", nombre);
+
                                         // create marker
+                                        //cambiar marker icon dependiendo del tipo de poi
+
+                                       switch (tipo_poi) {
+
+                                           case "1": //hotel
+
+                                           MarkerOptions markerH = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).snippet(direccion_poi).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_0star));
+                                               map.addMarker(markerH);
+                                               break;
+
+                                           case "2": //restaurante
+
+                                           MarkerOptions markerR = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).snippet(direccion_poi).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.restaurant));
+                                               map.addMarker(markerR);
+                                               break;
 
 
-                                            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_0star));
+                                       }
 
-
-                                          map.addMarker(marker);
 
 
 
