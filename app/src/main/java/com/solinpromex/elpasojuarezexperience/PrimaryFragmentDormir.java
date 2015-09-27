@@ -104,6 +104,9 @@ public class PrimaryFragmentDormir extends Fragment implements AdapterView.OnIte
 
                                 // adding movie to movies array
                                 hotelList.add(hotel);
+                                pDialog = new ProgressDialog(getActivity());
+                                pDialog.setMessage(obj.optString("id_hotel"));
+                               // pDialog.show();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
