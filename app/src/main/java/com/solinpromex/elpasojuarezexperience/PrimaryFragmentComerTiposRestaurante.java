@@ -19,7 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
-import com.solinpromex.elpasojuarezexperience.model.Hotel;
+import com.solinpromex.elpasojuarezexperience.model.Restaurante;
+import com.solinpromex.elpasojuarezexperience.model.TipoRestaurante;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SocialFragmentComer extends Fragment implements AdapterView.OnItemClickListener {
+public class PrimaryFragmentComerTiposRestaurante extends Fragment implements AdapterView.OnItemClickListener {
 
 
 
@@ -37,17 +38,17 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://solinpromex.com/epje/php/recuperar_hoteles_ep.php";
+    private static final String url = "http://solinpromex.com/epje/php/recuperar_tipos_rte.php";
     private ProgressDialog pDialog;
-    private List<Hotel> hotelList = new ArrayList<Hotel>();
+    private List<TipoRestaurante> tipoRestauranteList = new ArrayList<TipoRestaurante>();
     private ListView listView;
-    private CustomListAdapterEP adapter;
+    private CustomListAdapterTipoRte adapter;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.social_layout_dormir, null);
+        return inflater.inflate(R.layout.primary_layout_tiporte, null);
     }
 
     @Override
@@ -56,14 +57,14 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
 
 
         listView = (ListView) getView().findViewById(R.id.list);
-        adapter = new CustomListAdapterEP(getActivity(), hotelList);
+        adapter = new CustomListAdapterTipoRte (getActivity(), tipoRestauranteList);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(this);
 
         pDialog = new ProgressDialog(getActivity());
         // Showing progress dialog before making http request
-        pDialog.setMessage("Procesando restaurantes social...");
+        pDialog.setMessage("Procesando tipos..");
         pDialog.show();
 
 
@@ -74,32 +75,25 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
                         hidePDialog();
-
+    Log.d("estoy aqui","estoy");
                         // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
                                 JSONObject obj = response.getJSONObject(i);
-                                Hotel hotel = new Hotel();
-                                hotel.setId_hotel(obj.getInt("id_hotel"));
-                                hotel.setNombre(obj.getString("nombre_hotel"));
-                                hotel.setDescripcion(obj.getString("descripcion_hotel"));
-                                hotel.setLatitud(obj.getDouble("latitud_hotel"));
-                                hotel.setLongitud(obj.getDouble("longitud_hotel"));
-                                hotel.setDireccion(obj.getString("direccion_hotel"));
-                                hotel.setWeb(obj.getString("web_hotel"));
-                                hotel.setTel_hotel(obj.getString("tel_hotel"));
-                                hotel.setTel_reservas(obj.getString("tel_reservas"));
-                                hotel.setFoto(obj.getString("foto_hotel"));
-                                hotel.setCalificacion(obj.getDouble("calificacion_hotel"));
-                                hotel.setNum_estrellas(obj.getInt("num_estrellas"));
-                                hotel.setZona_hotel(obj.getString("zona_hotel"));
-                                hotel.setFacebook(obj.getString("facebook_hotel"));
-                                hotel.setTwitter(obj.getString("twitter_hotel"));
+                                TipoRestaurante restaurante = new TipoRestaurante();
+                                restaurante.setId_tipo(obj.getInt("id_tipo"));
+                                restaurante.setNombre_tipo(obj.getString("nombre_tipo"));
 
+                                restaurante.setFoto_tipo(obj.getString("foto_tipo"));
+
+                                Log.d(TAG, response.toString());
 
                                 // adding movie to movies array
-                                hotelList.add(hotel);
+                                tipoRestauranteList.add(restaurante);
+                                pDialog = new ProgressDialog(getActivity());
+                                pDialog.setMessage(obj.optString("id_tipo"));
+                               // pDialog.show();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -142,27 +136,16 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Hotel hotelActual = (Hotel) adapter.getItem(position);
-        String msg = "Elegiste el hotel " + hotelActual.getNombre();
+        TipoRestaurante rteActual = (TipoRestaurante) adapter.getItem(position);
+        String msg = "Has elegido el tipo " + rteActual.getNombre_tipo();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(getActivity(), Detalle_Hotel.class);
+        Intent intent = new Intent(getActivity(), MainActivity.class);
 
-        intent.putExtra("id_hotel", hotelActual.getId_hotel());
-        intent.putExtra("nombre_hotel", hotelActual.getNombre());
-        intent.putExtra("descripcion_hotel", hotelActual.getDescripcion());
-        intent.putExtra("latitud_hotel", hotelActual.getLatitud());
-        intent.putExtra("longitud_hotel", hotelActual.getLongitud());
-        intent.putExtra("direccion_hotel", hotelActual.getDireccion());
-        intent.putExtra("web_hotel", hotelActual.getWeb());
-        intent.putExtra("tel_hotel", hotelActual.getTel_hotel());
-        intent.putExtra("tel_reservas", hotelActual.getTel_reservas());
-        intent.putExtra("foto_hotel", hotelActual.getFoto());
-        intent.putExtra("calificacion_hotel", hotelActual.getCalificacion());
-        intent.putExtra("num_estrellas", hotelActual.getNum_estrellas());
-        intent.putExtra("zona_hotel", hotelActual.getZona_hotel());
-        intent.putExtra("facebook_hotel", hotelActual.getFacebook());
-        intent.putExtra("twitter_hotel", hotelActual.getTwitter());
+
+        intent.putExtra("nombre_tipo", rteActual.getNombre_tipo());
+
+
 
 
         startActivity(intent);

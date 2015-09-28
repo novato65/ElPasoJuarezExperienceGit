@@ -194,7 +194,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
                                     try {
 
 
-                                        JSONObject obj = (JSONObject) response.getJSONObject(i);
+                                        JSONObject obj = response.getJSONObject(i);
                                         POI poi = new POI();
 
                                         poi.setNombre_POI(obj.getString("nombre_hotel"));

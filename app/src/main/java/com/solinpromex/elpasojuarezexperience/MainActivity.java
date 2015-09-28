@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity{
 
                  if (menuItem.getItemId() == R.id.nav_item_comer) {
                      FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                     xfragmentTransaction.replace(R.id.containerView,new TabFragmentComer()).commit();
+                     xfragmentTransaction.replace(R.id.containerView,new TabFragmentComerTiposRestaurante()).commit();
                  }
                  if (menuItem.getItemId() == R.id.nav_item_comprar) {
                      FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
