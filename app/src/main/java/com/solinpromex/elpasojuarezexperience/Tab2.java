@@ -6,6 +6,7 @@ package com.solinpromex.elpasojuarezexperience;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -150,8 +151,8 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
         //map is ready
         // latitude and longitude
-        double latitude = latitud_del_hotel;
-        double longitude =longitud_del_hotel;
+        final double latitude = latitud_del_hotel;
+        final double longitude =longitud_del_hotel;
 
         // create marker
         MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).snippet(direccion_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.poi));
@@ -219,23 +220,46 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
                                         // create marker
                                         //cambiar marker icon dependiendo del tipo de poi
 
-                                       switch (tipo_poi) {
+                                        //calculo de distancias
 
-                                           case "1": //hotel
+                                        double distance;
 
-                                           MarkerOptions markerH = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).snippet(direccion_poi).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_0star));
-                                               map.addMarker(markerH);
-                                               break;
+                                        Location locationA = new Location("Hotel");
 
-                                           case "2": //restaurante
+                                        locationA.setLatitude(latitude);
 
-                                           MarkerOptions markerR = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).snippet(direccion_poi).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.restaurant));
-                                               map.addMarker(markerR);
-                                               break;
+                                        locationA.setLongitude(longitude);
+
+                                        Location locationB = new Location("POI");
+
+                                        locationB.setLatitude(latitud_del_hotel);
+
+                                        locationB.setLongitude(longitud_del_hotel);
+
+                                        distance = locationA.distanceTo(locationB);
+                                        Log.d("ADebugTag", "DISTANCIA: " + Double.toString(distance));
+
+                                        //limitar a marcadores en un radio de 1km
+
+                                        if (distance < 1000) {
+
+                                            switch (tipo_poi) {
+
+                                                case "1": //hotel
+
+                                                    MarkerOptions markerH = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).snippet(direccion_poi).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_0star));
+                                                    map.addMarker(markerH);
+                                                    break;
+
+                                                case "2": //restaurante
+
+                                                    MarkerOptions markerR = new MarkerOptions().position(new LatLng(latitud_del_hotel, longitud_del_hotel)).snippet(direccion_poi).title(nombre).icon(BitmapDescriptorFactory.fromResource(R.drawable.restaurant));
+                                                    map.addMarker(markerR);
+                                                    break;
 
 
-                                       }
-
+                                            }
+                                        }
 
 
 
@@ -264,4 +288,5 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
 
     }
+
 }

@@ -18,6 +18,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="MOSTRAR TODOS LOS MARCADORES DE INTERES"
-        android:id="@+id/boton_mostrar" />
+        android:text="MOSTRAR OTROS MARCADORES DE INTERES EN UN RADIO DE 1KM"
+        android:id="@+id/boton_mostrar"
+        android:background="@color/rojomodesto"
+        android:textColor="#ffffff"/>
 </RelativeLayout>
