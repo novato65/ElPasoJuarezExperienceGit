@@ -143,7 +143,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
             pDialog = null;
         }
     }
-
+//FIN DONDE DORMIR ESP
 
     @Override
     public void onMapReady(final GoogleMap map) {
