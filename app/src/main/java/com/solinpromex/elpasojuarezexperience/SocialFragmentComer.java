@@ -47,7 +47,7 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.social_layout_dormir, null);
+        return inflater.inflate(R.layout.social_layout_comer, null);
     }
 
     @Override

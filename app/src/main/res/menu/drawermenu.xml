@@ -7,17 +7,25 @@
     </group>
         <item android:title="Dónde?">
         <menu>
-    <item android:title="Dónde dormir..."
+    <item android:title="dormir"
           android:id="@+id/nav_item_dormir"
-          android:icon="@drawable/ic_hotel"/>
+          android:icon="@mipmap/dondedormir"/>
 
-    <item android:title="Dónde comer / tomar..."
+    <item android:title="comer"
           android:id="@+id/nav_item_comer"
-          android:icon="@drawable/ic_comer"/>
+          android:icon="@mipmap/dondecomer"/>
 
-    <item android:title="Dónde comprar..."
-          android:id="@+id/nav_item_comprar"
-          android:icon="@drawable/ic_comprar"/>
+    <item android:title="comprar"
+            android:id="@+id/nav_item_comprar"
+            android:icon="@mipmap/dondecomprar"/>
+
+            <item android:title="tomar y vida nocturna"
+                android:id="@+id/nav_item_tomar"
+                android:icon="@mipmap/dondetomar"/>
+
+            <item android:title="ver zonas turísticas"
+                android:id="@+id/nav_item_turismo"
+                android:icon="@mipmap/dondeturistear"/>
 
 
     </menu>
