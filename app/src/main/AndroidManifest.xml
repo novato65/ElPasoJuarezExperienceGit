@@ -69,6 +69,7 @@
             android:label="@string/title_activity_nuevo_comentario_hotel"
             android:screenOrientation="portrait">
         </activity>
+
     </application>
 
 </manifest>

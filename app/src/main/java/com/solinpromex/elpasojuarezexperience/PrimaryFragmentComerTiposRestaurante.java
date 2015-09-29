@@ -1,11 +1,16 @@
 package com.solinpromex.elpasojuarezexperience;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +37,7 @@ import java.util.List;
 
 public class PrimaryFragmentComerTiposRestaurante extends Fragment implements AdapterView.OnItemClickListener {
 
-
+    private OnFragmentInteractionListener mListener;
 
     // Log tag
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -43,6 +48,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     private List<TipoRestaurante> tipoRestauranteList = new ArrayList<TipoRestaurante>();
     private ListView listView;
     private CustomListAdapterTipoRte adapter;
+    FragmentManager mFragmentManager;
 
 
     @Nullable
@@ -54,6 +60,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
+
 
 
         listView = (ListView) getView().findViewById(R.id.list);
@@ -140,20 +147,32 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
         String msg = "Has elegido el tipo " + rteActual.getNombre_tipo();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Fragment newFragment = new TabFragmentComer();
 
-
-        intent.putExtra("nombre_tipo", rteActual.getNombre_tipo());
-
-
-
-
-        startActivity(intent);
-
-
-
+        if(mListener != null){
+            mListener.onFragmentInteraction(newFragment);
+        }
 
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Fragment fragment);
+    }
 }
