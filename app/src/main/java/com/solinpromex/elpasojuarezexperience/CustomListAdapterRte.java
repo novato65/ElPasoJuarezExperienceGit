@@ -11,9 +11,8 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
-
+import com.solinpromex.elpasojuarezexperience.model.Hotel;
 import com.solinpromex.elpasojuarezexperience.model.Restaurante;
-import com.solinpromex.elpasojuarezexperience.model.TipoRestaurante;
 
 import java.util.List;
 
@@ -50,16 +49,16 @@ public class CustomListAdapterRte extends BaseAdapter {
 			inflater = (LayoutInflater) activity
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null)
-			convertView = inflater.inflate(R.layout.list_row, null);
+			convertView = inflater.inflate(R.layout.list_row_rte, null);
 
 		if (imageLoader == null)
 			imageLoader = AppController.getInstance().getImageLoader();
 		NetworkImageView thumbNail = (NetworkImageView) convertView
 				.findViewById(R.id.thumbnail);
-		TextView nombre = (TextView) convertView.findViewById(R.id.title);
+		TextView nombre_rte = (TextView) convertView.findViewById(R.id.title);
 		TextView tipo_rte = (TextView) convertView.findViewById(R.id.rating);
 		TextView zona_rte = (TextView) convertView.findViewById(R.id.genre);
-		TextView calificacion = (TextView) convertView.findViewById(R.id.releaseYear);
+		TextView calificacion_rte = (TextView) convertView.findViewById(R.id.releaseYear);
 
 		// getting movie data for the row
 		Restaurante m = rteItems.get(position);
@@ -68,14 +67,17 @@ public class CustomListAdapterRte extends BaseAdapter {
 		thumbNail.setImageUrl(m.getFoto(), imageLoader);
 		
 		// nombre
-		nombre.setText(m.getNombre());
+		nombre_rte.setText(m.getNombre());
 		
-		// num-estrellas
-		tipo_rte.setText("Tipo: " + (m.getTipo_rte()) );
+		// tipo cocina
+		tipo_rte.setText("Tipo de cocina: " + m.getTipo_rte());
+		
+		// zona
 
+		zona_rte.setText("Zona: "+ m.getZona());
 
 		//calificacion
-		calificacion.setText("Valoración: " + String.valueOf(m.getCalificacion()));
+		calificacion_rte.setText("Valoración: " + String.valueOf(m.getCalificacion()));
 
 
 		return convertView;

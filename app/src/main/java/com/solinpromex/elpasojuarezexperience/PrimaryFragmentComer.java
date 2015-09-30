@@ -95,6 +95,10 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
                                 restaurante.setTipo_rte(obj.getString("tipo_rte"));
                                 restaurante.setFacebook(obj.getString("facebook_rte"));
                                 restaurante.setTwitter(obj.getString("google_rte"));
+                                restaurante.setZona(obj.getString("zona_rte"));
+                                restaurante.setCiudad(obj.getInt("ciudad"));
+                                restaurante.setPoi(obj.getInt("poi"));
+
 
 
                                 // adding movie to movies array

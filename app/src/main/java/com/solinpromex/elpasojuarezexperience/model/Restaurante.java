@@ -1,16 +1,16 @@
 package com.solinpromex.elpasojuarezexperience.model;
 
 public class Restaurante {
-	private String nombre, foto, descripcion,direccion,web,tel_rte,tel_reservas,tipo_rte,facebook,twitter;
-	private int  id;
+	private String nombre, foto, descripcion,direccion,web,tel_rte,tel_reservas,tipo_rte,facebook,twitter,zona;
+	private int  id,ciudad,poi;
 	private double calificacion,latitud,longitud;
 
 //SOLO PAR
 	public Restaurante() {
 	}
 
-	public Restaurante(String nombre, String facebook, String twitter, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas, String tipo_rte,
-                       double calificacion, double latitud, double longitud,  int id) {
+	public Restaurante(String nombre, String facebook, String twitter, String foto, String descripcion, String direccion, String web, String tel_hotel, String tel_reservas, String tipo_rte,String zona,
+                       double calificacion, double latitud, double longitud,  int id,int ciudad,int poi) {
         this.id = id;
         this.nombre = nombre;
 		this.foto = foto;
@@ -25,9 +25,20 @@ public class Restaurante {
         this.tipo_rte = tipo_rte;
         this.facebook = facebook;
         this.twitter =  twitter;
+        this.ciudad = ciudad;
+        this.poi = poi;
+        this.zona = zona;
 	}
 
 	//STRINGS
+    //nombre
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
 	//nombre
 	public String getNombre() {
 		return nombre;
@@ -123,6 +134,24 @@ public class Restaurante {
     public void setId_rte(int id) {
         this.id = id;
     }
+    //id_hotel
+    public int getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(int ciudad) {
+        this.ciudad = ciudad;
+    }
+    //id_hotel
+    public int getPoi() {
+        return poi;
+    }
+
+    public void setPoi(int poi) {
+        this.ciudad = poi;
+    }
+
+
 
 
     //DOUBLE
