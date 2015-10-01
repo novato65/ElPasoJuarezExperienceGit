@@ -11,12 +11,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -26,10 +28,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
 import com.solinpromex.elpasojuarezexperience.model.Restaurante;
 import com.solinpromex.elpasojuarezexperience.model.TipoRestaurante;
+import com.solinpromex.elpasojuarezexperience.util.BusProvider;
+import com.squareup.otto.Bus;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +53,9 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     private List<TipoRestaurante> tipoRestauranteList = new ArrayList<TipoRestaurante>();
     private ListView listView;
     private CustomListAdapterTipoRte adapter;
-    FragmentManager mFragmentManager;
+    TextView textView12;
+
+
 
 
     @Nullable
@@ -61,6 +68,8 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
+
+        BusProvider.getInstance().register(this);
 
 
         listView = (ListView) getView().findViewById(R.id.list);
@@ -147,9 +156,17 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
         String msg = "Has elegido el tipo " + rteActual.getNombre_tipo();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-        Fragment newFragment = new TabFragmentComer();
+               Fragment newFragment = new PrimaryFragmentComer();
 
-        if(mListener != null){
+
+        Bundle args = new Bundle();
+        args.putInt("myIntLabel", 2);
+        args.putString("myStringLabel", "my sample string");
+//and you can add all you want to that bundle like this
+        newFragment.setArguments(args);
+
+
+        if (mListener != null) {
             mListener.onFragmentInteraction(newFragment);
         }
 

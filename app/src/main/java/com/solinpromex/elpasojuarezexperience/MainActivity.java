@@ -8,6 +8,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import com.squareup.otto.Bus;
+
+import com.solinpromex.elpasojuarezexperience.util.BusProvider;
+import com.squareup.otto.Bus;
 
 public class MainActivity extends AppCompatActivity implements PrimaryFragmentComerTiposRestaurante.OnFragmentInteractionListener {
     DrawerLayout mDrawerLayout;
@@ -18,10 +22,15 @@ public class MainActivity extends AppCompatActivity implements PrimaryFragmentCo
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         /**
          *Setup the DrawerLayout and NavigationView
@@ -38,9 +47,11 @@ public class MainActivity extends AppCompatActivity implements PrimaryFragmentCo
              mFragmentManager = getSupportFragmentManager();
              mFragmentTransaction = mFragmentManager.beginTransaction();
              mFragmentTransaction.replace(R.id.containerView,new SentFragment()).commit();
-        /**
-         * Setup click events on the Navigation View Items.
-         */
+
+
+
+
+
 
              mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
              @Override
@@ -55,10 +66,11 @@ public class MainActivity extends AppCompatActivity implements PrimaryFragmentCo
 
 //                 }
 
-                if (menuItem.getItemId() == R.id.nav_item_dormir) {
-                    FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    xfragmentTransaction.replace(R.id.containerView,new TabFragmentDormir()).commit();
-                }
+
+                 if (menuItem.getItemId() == R.id.nav_item_dormir) {
+                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
+                     xfragmentTransaction.replace(R.id.containerView,new TabFragmentDormir()).commit();
+                 }
 
                  if (menuItem.getItemId() == R.id.nav_item_comer) {
                      FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
@@ -68,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements PrimaryFragmentCo
                      FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
                      xfragmentTransaction.replace(R.id.containerView,new TabFragmentComprar()).commit();
                  }
-
 
                  return false;
             }
@@ -98,4 +109,6 @@ public class MainActivity extends AppCompatActivity implements PrimaryFragmentCo
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+
 }

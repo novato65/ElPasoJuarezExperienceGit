@@ -20,6 +20,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
 import com.solinpromex.elpasojuarezexperience.model.Restaurante;
+import com.solinpromex.elpasojuarezexperience.util.BusProvider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,12 +49,19 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.primary_layout_comer, null);
+
     }
 
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
+
+
+        Bundle args = getArguments();
+        String hola = args.getString("myStringLabel");
+
+        Log.d(TAG, hola);
 
         listView = (ListView) getView().findViewById(R.id.list);
         adapter = new CustomListAdapterRte (getActivity(), restauranteList);
@@ -65,6 +73,10 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
         // Showing progress dialog before making http request
         pDialog.setMessage("Procesando restaurantes...");
         pDialog.show();
+
+
+
+
 
 
         // Creating volley request obj
