@@ -45,7 +45,12 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".Detalle_Hotel"
+        android:name=".Detalle_Hotel"
+        android:label="@string/title_activity_detalle__hotel"
+        android:screenOrientation="portrait">
+    </activity>
+        <activity
+            android:name=".Detalle_Restaurante"
             android:label="@string/title_activity_detalle__hotel"
             android:screenOrientation="portrait">
         </activity>
@@ -55,7 +60,17 @@
             android:screenOrientation="portrait">
     </activity>
         <activity
+            android:name=".NuevoComentarioRte"
+            android:label="@string/title_activity_nuevo_comentario_hotel"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name=".ConfirmarComentarioHotel"
+            android:label="@string/title_activity_nuevo_comentario_hotel"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ConfirmarComentarioRte"
             android:label="@string/title_activity_nuevo_comentario_hotel"
             android:screenOrientation="portrait">
         </activity>

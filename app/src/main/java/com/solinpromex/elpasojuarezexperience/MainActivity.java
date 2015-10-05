@@ -8,10 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import com.squareup.otto.Bus;
-
-import com.solinpromex.elpasojuarezexperience.util.BusProvider;
-import com.squareup.otto.Bus;
 
 public class MainActivity extends AppCompatActivity implements PrimaryFragmentComerTiposRestaurante.OnFragmentInteractionListener {
     DrawerLayout mDrawerLayout;

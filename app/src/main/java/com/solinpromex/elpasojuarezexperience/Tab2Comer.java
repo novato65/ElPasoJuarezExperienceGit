@@ -4,7 +4,7 @@ package com.solinpromex.elpasojuarezexperience;
  * Created by modestovascofornas on 9/16/15.
  */
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
@@ -15,42 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-
-
-
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.content.Intent;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -60,31 +30,24 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
-import com.solinpromex.elpasojuarezexperience.model.Hotel;
 import com.solinpromex.elpasojuarezexperience.model.POI;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.view.View.*;
+import static android.view.View.OnClickListener;
 
-public class Tab2 extends Fragment implements OnMapReadyCallback {
+public class Tab2Comer extends Fragment implements OnMapReadyCallback {
 
     private View view;
     private Context mContext;
 
-    private double latitud_del_hotel, longitud_del_hotel;
-    private String nombre_del_hotel,direccion_del_hotel;
+    private double latitud_del_rte, longitud_del_rte;
+    private String nombre_del_rte,direccion_del_rte;
 
     private static final String url = "http://solinpromex.com/epje/php/recuperar_marcadores.php";
     private ProgressDialog pDialog;
@@ -97,16 +60,16 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.tab_2, container, false);
+        view = inflater.inflate(R.layout.tab_2comer, container, false);
 
 
 
         mContext = getActivity();
 
-        nombre_del_hotel = getActivity().getIntent().getStringExtra("nombre_hotel");
-        direccion_del_hotel = getActivity().getIntent().getStringExtra("direccion_hotel");
-        latitud_del_hotel = getActivity().getIntent().getDoubleExtra("latitud_hotel", 0);
-        longitud_del_hotel = getActivity().getIntent().getDoubleExtra("longitud_hotel",0);
+        nombre_del_rte = getActivity().getIntent().getStringExtra("nombre_rte");
+        direccion_del_rte = getActivity().getIntent().getStringExtra("direccion_rte");
+        latitud_del_rte = getActivity().getIntent().getDoubleExtra("latitud_rte", 0);
+        longitud_del_rte = getActivity().getIntent().getDoubleExtra("longitud_rte",0);
 
 
         FragmentManager manager = getFragmentManager();
@@ -151,11 +114,11 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
         //map is ready
         // latitude and longitude
-        final double latitude = latitud_del_hotel;
-        final double longitude =longitud_del_hotel;
+        final double latitude = latitud_del_rte;
+        final double longitude =longitud_del_rte;
 
         // create marker
-        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_hotel).snippet(direccion_del_hotel).icon(BitmapDescriptorFactory.fromResource(R.drawable.poi));
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(nombre_del_rte).snippet(direccion_del_rte).icon(BitmapDescriptorFactory.fromResource(R.drawable.poi));
 
         // Changing marker icon
         // marker.icon(BitmapDescriptorFactory
@@ -165,7 +128,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
         map.addMarker(marker);
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(latitud_del_hotel, longitud_del_hotel)).zoom(15).build();
+                .target(new LatLng(latitud_del_rte, longitud_del_rte)).zoom(15).build();
         map.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
 
@@ -175,7 +138,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
 
 
-        mostrarButton.setOnClickListener(new View.OnClickListener() {
+        mostrarButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -261,7 +224,7 @@ public class Tab2 extends Fragment implements OnMapReadyCallback {
 
 
 
-                                    }  catch (JSONException e) {
+                                    } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
 

@@ -20,7 +20,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
 import com.solinpromex.elpasojuarezexperience.model.Restaurante;
-import com.solinpromex.elpasojuarezexperience.util.BusProvider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +37,7 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://solinpromex.com/epje/php/recuperar_restaurantes.php";
+    private static final String url = "http://solinpromex.com/epje/php/recuperar_restaurantes.php?id=";
     private ProgressDialog pDialog;
     private List<Restaurante> restauranteList = new ArrayList<Restaurante>();
     private ListView listView;
@@ -61,7 +60,7 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
         Bundle args = getArguments();
         String hola = args.getString("myStringLabel");
 
-        Log.d(TAG, hola);
+        Log.d("TIPO RTE", hola);
 
         listView = (ListView) getView().findViewById(R.id.list);
         adapter = new CustomListAdapterRte (getActivity(), restauranteList);
@@ -80,7 +79,7 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
 
 
         // Creating volley request obj
-        JsonArrayRequest movieReq = new JsonArrayRequest(url,
+        JsonArrayRequest movieReq = new JsonArrayRequest(url+hola,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -164,7 +163,7 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
         String msg = "Elegiste el restaurante " + rteActual.getNombre();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(getActivity(), Detalle_Hotel.class);
+        Intent intent = new Intent(getActivity(), Detalle_Restaurante.class);
 
         intent.putExtra("id_rte", rteActual.getId_rte());
         intent.putExtra("nombre_rte", rteActual.getNombre());
@@ -180,6 +179,9 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
         intent.putExtra("tipo_rte", rteActual.getTipo_rte());
         intent.putExtra("facebook_rte", rteActual.getFacebook());
         intent.putExtra("google_rte", rteActual.getTwitter());
+        intent.putExtra("zona_rte", rteActual.getZona());
+        intent.putExtra("ciudad_rte", rteActual.getCiudad());
+        intent.putExtra("poi_rte", rteActual.getPoi());
 
 
         startActivity(intent);

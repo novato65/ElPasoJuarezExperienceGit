@@ -3,15 +3,9 @@ package com.solinpromex.elpasojuarezexperience;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,15 +20,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.solinpromex.elpasojuarezexperience.app.AppController;
-import com.solinpromex.elpasojuarezexperience.model.Restaurante;
 import com.solinpromex.elpasojuarezexperience.model.TipoRestaurante;
-import com.solinpromex.elpasojuarezexperience.util.BusProvider;
-import com.squareup.otto.Bus;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +43,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     private List<TipoRestaurante> tipoRestauranteList = new ArrayList<TipoRestaurante>();
     private ListView listView;
     private CustomListAdapterTipoRte adapter;
-    TextView textView12;
+
 
 
 
@@ -69,7 +59,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
         super.onActivityCreated(state);
 
 
-        BusProvider.getInstance().register(this);
+
 
 
         listView = (ListView) getView().findViewById(R.id.list);
@@ -161,7 +151,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
 
         Bundle args = new Bundle();
         args.putInt("myIntLabel", 2);
-        args.putString("myStringLabel", "my sample string");
+        args.putString("myStringLabel", rteActual.getNombre_tipo());
 //and you can add all you want to that bundle like this
         newFragment.setArguments(args);
 
