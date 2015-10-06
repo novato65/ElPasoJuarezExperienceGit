@@ -65,7 +65,7 @@ public class CustomListAdapterTipoRte extends BaseAdapter {
 		thumbNail.setImageUrl(m.getFoto_tipo(), imageLoader);
 		
 		// nombre
-		nombre.setText(m.getNombre_tipo());
+		nombre.setText("Cocina tipo "+m.getNombre_tipo());
 		
 
 

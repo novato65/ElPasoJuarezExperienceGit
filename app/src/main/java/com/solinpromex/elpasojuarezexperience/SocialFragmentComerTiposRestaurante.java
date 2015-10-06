@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PrimaryFragmentComerTiposRestaurante extends Fragment implements AdapterView.OnItemClickListener {
+public class SocialFragmentComerTiposRestaurante extends Fragment implements AdapterView.OnItemClickListener {
 
     private OnFragmentInteractionListener mListener;
 
@@ -38,7 +37,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://solinpromex.com/epje/php/recuperar_tipos_rte.php";
+    private static final String url = "http://solinpromex.com/epje/php/recuperar_tipos_rte_ep.php";
     private ProgressDialog pDialog;
     private List<TipoRestaurante> tipoRestauranteList = new ArrayList<TipoRestaurante>();
     private ListView listView;
@@ -51,12 +50,14 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.primary_layout_tiporte, null);
+        return inflater.inflate(R.layout.social_layout_tiporte, null);
     }
 
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
+
+
 
 
 
@@ -128,7 +129,6 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
     public void onDestroy() {
         super.onDestroy();
         hidePDialog();
-
     }
 
     private void hidePDialog() {
@@ -146,7 +146,7 @@ public class PrimaryFragmentComerTiposRestaurante extends Fragment implements Ad
         String msg = "Has elegido el tipo " + rteActual.getNombre_tipo();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-               Fragment newFragment = new PrimaryFragmentComer();
+               Fragment newFragment = new SocialFragmentComer();
 
 
         Bundle args = new Bundle();

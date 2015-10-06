@@ -45,6 +45,7 @@ public class Tab3Comer extends Fragment {
     private ListView listView;
     private OpinionesRteListAdapter adapter;
     private ImageButton mexbutton;
+    private Integer ciudad;
 
     private Context mContext;
     @Override
@@ -165,10 +166,12 @@ public class Tab3Comer extends Fragment {
                 id_rte = getActivity().getIntent().getIntExtra("id_rte", 0);
                 nombre_rte = getActivity().getIntent().getStringExtra("nombre_rte");
 
+                ciudad = getActivity().getIntent().getIntExtra("ciudad_rte", 30);
                 intent.putExtra("id_rte", id_rte);
                 intent.putExtra("nombre_rte", nombre_rte);
+                intent.putExtra("ciudad_rte", ciudad);
 
-
+                Log.d("CIUDAD ENVIADA A CONFIRMAR COMENTARIO ES INTEGER",String.valueOf(ciudad));
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 startActivity(intent);

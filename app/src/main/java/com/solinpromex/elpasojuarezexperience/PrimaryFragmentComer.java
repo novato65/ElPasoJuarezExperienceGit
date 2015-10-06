@@ -110,7 +110,8 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
                                 restaurante.setCiudad(obj.getInt("ciudad"));
                                 restaurante.setPoi(obj.getInt("poi"));
 
-
+                                Log.d("CIUDAD RECIBIDA JUAREZ*************", String.valueOf(obj.getInt("ciudad")));
+                                Log.d("POI RECIBIDO JUAREZ****************", String.valueOf(obj.getInt("poi")));
 
                                 // adding movie to movies array
                                 restauranteList.add(restaurante);
@@ -182,6 +183,8 @@ public class PrimaryFragmentComer extends Fragment implements AdapterView.OnItem
         intent.putExtra("zona_rte", rteActual.getZona());
         intent.putExtra("ciudad_rte", rteActual.getCiudad());
         intent.putExtra("poi_rte", rteActual.getPoi());
+
+        Log.d("CIUDAD ENVIADA A TAB JUAREZ*************", String.valueOf(rteActual.getCiudad()));
 
 
         startActivity(intent);

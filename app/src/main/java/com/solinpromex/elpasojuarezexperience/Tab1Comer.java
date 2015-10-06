@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,8 @@ public class Tab1Comer extends Fragment {
     private ImageView rte_foto;
     private String nombre_rte_string, foto_rte_recibida, direccion_rte,
             id_rte_string, descripcion_rte_string, web_rte_string, tel_rte_string, tel_reservar_string, facebook_rte_string,
-            google_rte_string, tipo_string;
-    private Integer id_rte;
+            google_rte_string, tipo_string,ciudad_string;
+    private Integer id_rte,ciudad;
 
 
     @Override
@@ -49,13 +50,17 @@ public class Tab1Comer extends Fragment {
         super.onActivityCreated(state);
 
         id_rte = getActivity().getIntent().getIntExtra("id_rte", 0);
+        ciudad = getActivity().getIntent().getIntExtra("ciudad_rte", 30);
+      //  ciudad_string = getActivity().getIntent().getStringExtra("ciudad_rte");
+
+        Log.d("CIUDAD***************", String.valueOf(ciudad));
         //ponemos el nombre del hotel en el textview
         rte_nombre = (TextView) getView().findViewById(R.id.nombre_rte_tv );
         id_rte_string = String.valueOf(id_rte_string);
 
-        rte_nombre.setText(getActivity().getIntent().getStringExtra("nombre_rte"));
+     rte_nombre.setText(getActivity().getIntent().getStringExtra("nombre_rte"));
 
-
+       // rte_nombre.setText(String.valueOf(ciudad));
         //ponemos foto del hotel en el imageview
         rte_foto = (ImageView) getView().findViewById(R.id.fotodelrte);
         foto_rte_recibida = getActivity().getIntent().getStringExtra("foto_rte");

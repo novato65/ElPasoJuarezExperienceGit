@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,8 +26,9 @@ import java.util.List;
 
 public class ConfirmarComentarioRte extends AppCompatActivity {
 
-    private String user_name, id_rte,opinion,valoracion,email,nombre_rte;
+    private String user_name, id_rte,opinion,valoracion,email,nombre_rte,url,ciudad_rte_string;
     private TextView tvNombreHotel,tvOpinion,tvCalificacion,tvUsername,tvEmail;
+    private Integer ciudad_rte;
 
 
     @Override
@@ -36,10 +38,14 @@ public class ConfirmarComentarioRte extends AppCompatActivity {
 
 
         id_rte = getIntent().getStringExtra("id_rte");
+        ciudad_rte = getIntent().getIntExtra("ciudad_rte", 666);
+
+
+        Log.d("CIUDAD RECIBIDA EN COMENTARIO======",String.valueOf(ciudad_rte));
 
         tvNombreHotel = (TextView) findViewById(R.id.textView9);
         nombre_rte = getIntent().getStringExtra("nombre_rte");
-        tvNombreHotel.setText(nombre_rte);
+        tvNombreHotel.setText(ciudad_rte_string);
 
         tvUsername = (TextView) findViewById(R.id.textView2);
         user_name = getIntent().getStringExtra("user_name");
@@ -56,6 +62,8 @@ public class ConfirmarComentarioRte extends AppCompatActivity {
         tvCalificacion = (TextView) findViewById(R.id.textView7);
         valoracion = getIntent().getStringExtra("valoracion");
         tvCalificacion.setText(valoracion);
+
+
 
         //db   user_name = user_name
         //      hotel_id = id_hotel
@@ -83,72 +91,162 @@ public class ConfirmarComentarioRte extends AppCompatActivity {
 
     private void insertToDatabase(String hotel_id_insert, String opinion_insert, String valoracion_insert, String user_email_insert,
                                   String user_name_insert){
-        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
-            @Override
-            protected String doInBackground(String... params) {
 
 
-                String paramHotel_id = params[0];
-                String paramOpinion = params [1];
-                String paramValoracion = params [2];
-                String paramUser_email = params [3];
-                String paramUser_name = params [4];
+            if (ciudad_rte == 0) {
+
+                class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
 
 
-                String valor0 = id_rte;
-                String valor1 = opinion;
-                String valor2 = valoracion;
-                String valor3 = email;
-                String valor4 = user_name;
-                String valor5 = nombre_rte;
+                    @Override
+                    protected String doInBackground(String... params) {
 
 
+                        String paramHotel_id = params[0];
+                        String paramOpinion = params[1];
+                        String paramValoracion = params[2];
+                        String paramUser_email = params[3];
+                        String paramUser_name = params[4];
 
 
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("valor0", valor0));
-
-                nameValuePairs.add(new BasicNameValuePair("valor1", valor1));
-
-                nameValuePairs.add(new BasicNameValuePair("valor2", valor2));
-
-                nameValuePairs.add(new BasicNameValuePair("valor3", valor3));
-
-                nameValuePairs.add(new BasicNameValuePair("valor4", valor4));
-                nameValuePairs.add(new BasicNameValuePair("valor5", valor5));
-
-                try {
-                    HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost(
-                            "http://solinpromex.com/epje/php/insertar_opinion_rte.php");
-                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                    HttpResponse response = httpClient.execute(httpPost);
-
-                    HttpEntity entity = response.getEntity();
+                        String valor0 = id_rte;
+                        String valor1 = opinion;
+                        String valor2 = valoracion;
+                        String valor3 = email;
+                        String valor4 = user_name;
+                        String valor5 = nombre_rte;
 
 
-                } catch (ClientProtocolException e) {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                        nameValuePairs.add(new BasicNameValuePair("valor0", valor0));
 
-                } catch (IOException e) {
+                        nameValuePairs.add(new BasicNameValuePair("valor1", valor1));
+
+                        nameValuePairs.add(new BasicNameValuePair("valor2", valor2));
+
+                        nameValuePairs.add(new BasicNameValuePair("valor3", valor3));
+
+                        nameValuePairs.add(new BasicNameValuePair("valor4", valor4));
+                        nameValuePairs.add(new BasicNameValuePair("valor5", valor5));
+
+
+                        try {
+                            HttpClient httpClient = new DefaultHttpClient();
+
+
+                            HttpPost httpPost = new HttpPost("http://solinpromex.com/epje/php/insertar_opinion_rte.php");
+                            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                            HttpResponse response = httpClient.execute(httpPost);
+
+                            HttpEntity entity = response.getEntity();
+
+
+                        } catch (ClientProtocolException e) {
+
+                        } catch (IOException e) {
+
+                        }
+                        return "Datos enviados..una vez confirmado su email, publicaremos su opinión y valoración.";
+                    }
+
+                    @Override
+                    protected void onPostExecute(String result) {
+                        super.onPostExecute(result);
+
+                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                        setResultOkSoSecondActivityWontBeShown();
+                        finish();
+
+                    }
+                }
+
+
+                SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+                sendPostReqAsyncTask.execute(id_rte, opinion, valoracion, email, user_name);
+
+
+            }
+        if (ciudad_rte == 1) {
+
+            class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+
+                @Override
+                protected String doInBackground(String... params) {
+
+
+                    String paramHotel_id = params[0];
+                    String paramOpinion = params[1];
+                    String paramValoracion = params[2];
+                    String paramUser_email = params[3];
+                    String paramUser_name = params[4];
+
+
+                    String valor0 = id_rte;
+                    String valor1 = opinion;
+                    String valor2 = valoracion;
+                    String valor3 = email;
+                    String valor4 = user_name;
+                    String valor5 = nombre_rte;
+
+
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                    nameValuePairs.add(new BasicNameValuePair("valor0", valor0));
+
+                    nameValuePairs.add(new BasicNameValuePair("valor1", valor1));
+
+                    nameValuePairs.add(new BasicNameValuePair("valor2", valor2));
+
+                    nameValuePairs.add(new BasicNameValuePair("valor3", valor3));
+
+                    nameValuePairs.add(new BasicNameValuePair("valor4", valor4));
+                    nameValuePairs.add(new BasicNameValuePair("valor5", valor5));
+
+
+                    try {
+                        HttpClient httpClient = new DefaultHttpClient();
+
+
+                        HttpPost httpPost = new HttpPost("http://solinpromex.com/epje/php/insertar_opinion_rte_ep.php");
+                        httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                        HttpResponse response = httpClient.execute(httpPost);
+
+                        HttpEntity entity = response.getEntity();
+
+
+                    } catch (ClientProtocolException e) {
+
+                    } catch (IOException e) {
+
+                    }
+                    return "Datos enviados ep..una vez confirmado su email, publicaremos su opinión y valoración.";
+                }
+
+                @Override
+                protected void onPostExecute(String result) {
+                    super.onPostExecute(result);
+
+                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                    setResultOkSoSecondActivityWontBeShown();
+                    finish();
 
                 }
-                return "Datos enviados..una vez confirmado su email, publicaremos su opinión y valoración.";
             }
 
-            @Override
-            protected void onPostExecute(String result) {
-                super.onPostExecute(result);
 
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                setResultOkSoSecondActivityWontBeShown();
-                finish();
+            SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+            sendPostReqAsyncTask.execute(id_rte, opinion, valoracion, email, user_name);
 
-            }
+
         }
-        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(id_rte, opinion, valoracion, email, user_name);
+
     }
+
+
+
+
     private void setResultOkSoSecondActivityWontBeShown() {
         Intent intent = new Intent();
         if (getParent() == null) {

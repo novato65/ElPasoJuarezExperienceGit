@@ -37,7 +37,7 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://solinpromex.com/epje/php/recuperar_restaurantes.php";
+    private static final String url = "http://solinpromex.com/epje/php/recuperar_restaurantes_ep.php?id=";
     private ProgressDialog pDialog;
     private List<Restaurante> restauranteList = new ArrayList<Restaurante>();
     private ListView listView;
@@ -48,12 +48,19 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.primary_layout_comer, null);
+
     }
 
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
+
+
+        Bundle args = getArguments();
+        String hola = args.getString("myStringLabel");
+
+        Log.d("TIPO RTE", hola);
 
         listView = (ListView) getView().findViewById(R.id.list);
         adapter = new CustomListAdapterRte (getActivity(), restauranteList);
@@ -67,8 +74,12 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
         pDialog.show();
 
 
+
+
+
+
         // Creating volley request obj
-        JsonArrayRequest movieReq = new JsonArrayRequest(url,
+        JsonArrayRequest movieReq = new JsonArrayRequest(url+hola,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -99,6 +110,8 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
                                 restaurante.setCiudad(obj.getInt("ciudad"));
                                 restaurante.setPoi(obj.getInt("poi"));
 
+                                Log.d("CIUDAD RECIBIDA EL PASO*************", String.valueOf(obj.getInt("ciudad")));
+                                Log.d("POI RECIBIDO EL PASO****************", String.valueOf(obj.getInt("poi")));
 
 
                                 // adding movie to movies array
@@ -142,6 +155,7 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
         if (pDialog != null) {
             pDialog.dismiss();
             pDialog = null;
+
         }
     }
 
@@ -152,7 +166,7 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
         String msg = "Elegiste el restaurante " + rteActual.getNombre();
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(getActivity(), Detalle_Hotel.class);
+        Intent intent = new Intent(getActivity(), Detalle_Restaurante.class);
 
         intent.putExtra("id_rte", rteActual.getId_rte());
         intent.putExtra("nombre_rte", rteActual.getNombre());
@@ -168,6 +182,9 @@ public class SocialFragmentComer extends Fragment implements AdapterView.OnItemC
         intent.putExtra("tipo_rte", rteActual.getTipo_rte());
         intent.putExtra("facebook_rte", rteActual.getFacebook());
         intent.putExtra("google_rte", rteActual.getTwitter());
+        intent.putExtra("zona_rte", rteActual.getZona());
+        intent.putExtra("ciudad_rte", rteActual.getCiudad());
+        intent.putExtra("poi_rte", rteActual.getPoi());
 
 
         startActivity(intent);

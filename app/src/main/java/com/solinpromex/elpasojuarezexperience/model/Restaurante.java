@@ -31,7 +31,7 @@ public class Restaurante {
 	}
 
 	//STRINGS
-    //nombre
+    //zona
     public String getZona() {
         return zona;
     }
@@ -148,7 +148,7 @@ public class Restaurante {
     }
 
     public void setPoi(int poi) {
-        this.ciudad = poi;
+        this.poi = poi;
     }
 
 

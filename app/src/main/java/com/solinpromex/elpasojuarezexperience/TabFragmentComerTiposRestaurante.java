@@ -17,7 +17,7 @@ public class TabFragmentComerTiposRestaurante extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 1 ;
+    public static int int_items = 2 ;
 
     @Nullable
     @Override
@@ -66,6 +66,7 @@ public class TabFragmentComerTiposRestaurante extends Fragment {
         {
           switch (position){
               case 0 : return new PrimaryFragmentComerTiposRestaurante();
+              case 1 : return new SocialFragmentComerTiposRestaurante();
 
 
           }
@@ -88,7 +89,10 @@ public class TabFragmentComerTiposRestaurante extends Fragment {
 
             switch (position){
                 case 0 :
-                    return "ELIJA TIPO";
+                    return "CIUDAD JUAREZ";
+                case 1 :
+                    return "EL PASO";
+
 
 
             }

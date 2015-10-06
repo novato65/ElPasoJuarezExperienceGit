@@ -3,6 +3,7 @@ package com.solinpromex.elpasojuarezexperience;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -12,7 +13,7 @@ public class NuevoComentarioRte extends AppCompatActivity  {
 
     private TextView rte_calificado,valor_calificacion,user_name_texto,opinion_texto, user_email_texto;
     private String user_email, id_del_rte, nombre_del_rte,user_name,opinion_del_usuario;
-    private int rte_id;
+    private int rte_id,ciudad_recibida;
     private Button boton_enviar;
 
 
@@ -43,6 +44,8 @@ public class NuevoComentarioRte extends AppCompatActivity  {
         rte_calificado.setText(nombre_del_rte);
        // hotel_calificado.setText(id_del_hotel);
 
+        ciudad_recibida = getIntent().getIntExtra("ciudad_rte",666);
+        Log.d("CIUDAD RECIBIDA EN NUEVO COMENTARIO=", String.valueOf(ciudad_recibida));
 
         seekbar.setProgress(5);
 
@@ -90,6 +93,7 @@ public class NuevoComentarioRte extends AppCompatActivity  {
                 intent.putExtra("opinion", opinion_del_usuario);
                 intent.putExtra("valoracion", valor_calificacion.getText());
                 intent.putExtra("email", user_email);
+                intent.putExtra("ciudad_rte",ciudad_recibida);
 
                 intent.putExtra("nombre_rte", rte_calificado.getText());
 

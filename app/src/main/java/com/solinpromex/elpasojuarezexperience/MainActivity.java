@@ -9,7 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements PrimaryFragmentComerTiposRestaurante.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements PrimaryFragmentComerTiposRestaurante.OnFragmentInteractionListener,SocialFragmentComerTiposRestaurante.OnFragmentInteractionListener {
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
